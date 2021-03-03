@@ -17,4 +17,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TitlePage.unity
     guid: 23a6a05897f6c7140903da53b436069d
+  - enabled: 1
+    path: Assets/Scenes/PlayModePage.unity
+    guid: 73c454bf4c3237141a1671d5b36095b2
+  - enabled: 1
+    path: Assets/Scenes/WorldPage.unity
+    guid: 3a1e77d6361e3ed48b821cdc3eecb6a2
+  - enabled: 1
+    path: Assets/Scenes/SectionPage.unity
+    guid: d2ecce16ae6455143bc07fb369c7688a
+  - enabled: 1
+    path: Assets/Scenes/CharacterPage.unity
+    guid: 9ebc95d42a4d2b14e93f41f1f5664af1
+  - enabled: 1
+    path: Assets/Scenes/DoorPage.unity
+    guid: a1bc3a03537a49b4780efea3579a604d
+  - enabled: 1
+    path: Assets/Scenes/BattlePage.unity
+    guid: f0f40b83a50fae34ea767d9ed5223aa4
   m_configObjects: {}
