@@ -4,6 +4,7 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class Validate_Login : MonoBehaviour
 {
@@ -49,9 +50,15 @@ public class Validate_Login : MonoBehaviour
         {
             Debug.Log(www.downloadHandler.text);
             string error = www.downloadHandler.text;
-            textField = GameObject.Find("error_text").GetComponent<Text>();
-            textField.text = error;
-            
+            if (error.Equals("Success"))
+            {
+                SceneManager.LoadScene("TitlePage");
+            }
+            else
+            {
+                textField = GameObject.Find("error_text").GetComponent<Text>();
+                textField.text = error;
+            }
         
         }
     }
