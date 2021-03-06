@@ -16,7 +16,7 @@ public class makeLeaderboard : MonoBehaviour
     { 
         int x = -220;   //position for text label
         int y = 170;    //position for text label
-
+        var colour = Color.white;
         int rank = 1;   //user rank
 
         Font arial;
@@ -63,8 +63,12 @@ public class makeLeaderboard : MonoBehaviour
         reader.Close();
 
         //print leaderboard
-        for (int i = 0; i < nameScores.Length - 1; i = i + 2)
+        for (int i = 0; i < 10; i = i + 2)
         {
+            if (nameScores[i].Equals(PlayerPrefs.GetString("Name")))
+            {
+                colour = Color.yellow;
+            }
             //disp Rank
             textGO = new GameObject();
             textGO.transform.parent = canvasGO.transform;
@@ -82,6 +86,7 @@ public class makeLeaderboard : MonoBehaviour
             text.fontSize = 30;
             text.font = arial;
             text.alignment = TextAnchor.MiddleCenter;
+            text.color = colour;
 
             rectTransform = text.GetComponent<RectTransform>();
             rectTransform.localPosition = new Vector3(x, y, 0);
@@ -96,6 +101,7 @@ public class makeLeaderboard : MonoBehaviour
             text.fontSize = 30;
             text.font = arial;
             text.alignment = TextAnchor.MiddleLeft;
+            text.color = colour;
 
             rectTransform = text.GetComponent<RectTransform>();
             rectTransform.localPosition = new Vector3(x + 200, y, 0);
@@ -110,14 +116,80 @@ public class makeLeaderboard : MonoBehaviour
             text.fontSize = 30;
             text.font = arial;
             text.alignment = TextAnchor.MiddleCenter;
+            text.color = colour;
 
             rectTransform = text.GetComponent<RectTransform>();
             rectTransform.localPosition = new Vector3(x + 400, y, 0);
             rectTransform.sizeDelta = new Vector2(300, 60);
             y = y - 60; // move y position down
             rank++; //increase rank
+            colour = Color.white;
         }
+        if (PlayerPrefs.GetInt("Rank") > 5)
+        {
+            // ...
+            textGO = new GameObject();
+            textGO.transform.parent = canvasGO.transform;
+            textGO.AddComponent<Text>();
+            text = textGO.GetComponent<Text>();
+            text.text = ".\n.\n.";
+            text.fontSize = 30;
+            text.font = arial;
+            text.alignment = TextAnchor.MiddleCenter;
+            text.color = colour;
 
+            rectTransform = text.GetComponent<RectTransform>();
+            rectTransform.localPosition = new Vector3(0, y-10, 0);
+            rectTransform.sizeDelta = new Vector2(50, 120);
+
+            y = y - 80;
+            colour = Color.yellow;
+
+            //disp Rank
+            textGO = new GameObject();
+            textGO.transform.parent = canvasGO.transform;
+            textGO.AddComponent<Text>();
+            text = textGO.GetComponent<Text>();
+            text.text = PlayerPrefs.GetInt("Rank").ToString() + ".";
+            text.fontSize = 30;
+            text.font = arial;
+            text.alignment = TextAnchor.MiddleCenter;
+            text.color = colour;
+
+            rectTransform = text.GetComponent<RectTransform>();
+            rectTransform.localPosition = new Vector3(x, y, 0);
+            rectTransform.sizeDelta = new Vector2(50, 60);
+
+            //disp Name
+            textGO = new GameObject();
+            textGO.transform.parent = canvasGO.transform;
+            textGO.AddComponent<Text>();
+            text = textGO.GetComponent<Text>();
+            text.text = PlayerPrefs.GetString("Name");
+            text.fontSize = 30;
+            text.font = arial;
+            text.alignment = TextAnchor.MiddleLeft;
+            text.color = colour;
+
+            rectTransform = text.GetComponent<RectTransform>();
+            rectTransform.localPosition = new Vector3(x + 200, y, 0);
+            rectTransform.sizeDelta = new Vector2(300, 60);
+
+            //disp Score
+            textGO = new GameObject();
+            textGO.transform.parent = canvasGO.transform;
+            textGO.AddComponent<Text>();
+            text = textGO.GetComponent<Text>();
+            text.text = PlayerPrefs.GetString("Score");
+            text.fontSize = 30;
+            text.font = arial;
+            text.alignment = TextAnchor.MiddleCenter;
+            text.color = colour;
+
+            rectTransform = text.GetComponent<RectTransform>();
+            rectTransform.localPosition = new Vector3(x + 400, y, 0);
+            rectTransform.sizeDelta = new Vector2(300, 60);
+        }
     }
     
     // Update is called once per frame

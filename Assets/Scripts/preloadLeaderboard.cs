@@ -30,6 +30,12 @@ public class preloadLeaderboard : MonoBehaviour
             StreamWriter writer = new StreamWriter(path, false);
             for (int i = 0; i < nameScores.Length - 1; i++){
                 writer.WriteLine(nameScores[i]);
+                if(nameScores[i].Equals(PlayerPrefs.GetString("Name")))
+                {
+                    PlayerPrefs.SetInt("Rank", i / 2);
+                    PlayerPrefs.SetString("Score", nameScores[i + 1]);
+                    break;
+                }
             }
             writer.Close();
         }

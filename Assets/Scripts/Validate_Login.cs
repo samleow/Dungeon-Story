@@ -52,6 +52,7 @@ public class Validate_Login : MonoBehaviour
             string error = www.downloadHandler.text;
             if (error.Equals("Success"))
             {
+                PlayerPrefs.SetString("Name", user);
                 SceneManager.LoadScene("TitlePage");
             }
             else
