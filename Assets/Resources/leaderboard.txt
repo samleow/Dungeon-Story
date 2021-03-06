@@ -1,0 +1,10 @@
+Tom
+100
+Jimmy
+100
+John
+75
+May
+50
+Peter
+25
