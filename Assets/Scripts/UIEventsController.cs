@@ -17,4 +17,27 @@ public class UIEventsController : MonoBehaviour
         Application.Quit();
     }
 
+    // Select world
+    public void SelectWorld(int world)
+    {
+        GameData.getInstance.world_selected = world;
+    }
+
+    // Select stage
+    public void SelectStage(int stage)
+    {
+        GameData.getInstance.stage_selected = stage;
+    }
+
+    // Select Character
+    public void SelectCharacter(Character character)
+    {
+        GameData.getInstance.player_char = character;
+    }
+
+    // Select door
+    public void SelectDoor(int door)
+    {
+        GameData.getInstance.room_current = door;
+    }
 }

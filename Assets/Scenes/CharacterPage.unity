@@ -133,8 +133,9 @@ GameObject:
   - component: {fileID: 67206029}
   - component: {fileID: 67206028}
   - component: {fileID: 67206027}
+  - component: {fileID: 67206030}
   m_Layer: 5
-  m_Name: Character 1 Button
+  m_Name: Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,7 +203,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 67206028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1297055004}
+        m_MethodName: SelectCharacter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 67206030}
+          m_ObjectArgumentAssemblyTypeName: Character, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &67206028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +252,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67206025}
   m_CullTransparentMesh: 0
+--- !u!114 &67206030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67206025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1f9a59a10e2664186863675baf73d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health_max: 5
+  health_current: 5
+  attack: 3
+  class_name: Warrior
+  description: Increased health.
 --- !u!1 &119540115
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,8 +624,9 @@ GameObject:
   - component: {fileID: 791399196}
   - component: {fileID: 791399195}
   - component: {fileID: 791399194}
+  - component: {fileID: 791399197}
   m_Layer: 5
-  m_Name: Character 3 Button
+  m_Name: Ranger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -664,7 +694,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 791399195}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1297055004}
+        m_MethodName: SelectCharacter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 791399197}
+          m_ObjectArgumentAssemblyTypeName: Character, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &791399195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,6 +743,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791399192}
   m_CullTransparentMesh: 0
+--- !u!114 &791399197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791399192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1f9a59a10e2664186863675baf73d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health_max: 3
+  health_current: 3
+  attack: 5
+  class_name: Ranger
+  description: Increased Attack.
 --- !u!1 &1256710536
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,7 +1013,6 @@ RectTransform:
   - {fileID: 791399193}
   - {fileID: 434396942}
   - {fileID: 119540116}
-  - {fileID: 2070431359}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1372,8 +1429,9 @@ GameObject:
   - component: {fileID: 1785123654}
   - component: {fileID: 1785123653}
   - component: {fileID: 1785123652}
+  - component: {fileID: 1785123655}
   m_Layer: 5
-  m_Name: Character 2 Button
+  m_Name: Mage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1441,7 +1499,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1785123653}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1297055004}
+        m_MethodName: SelectCharacter
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1785123655}
+          m_ObjectArgumentAssemblyTypeName: Character, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1785123653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1479,83 +1548,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785123650}
   m_CullTransparentMesh: 0
---- !u!1 &2070431358
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2070431359}
-  - component: {fileID: 2070431361}
-  - component: {fileID: 2070431360}
-  m_Layer: 5
-  m_Name: TO DELETE
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2070431359
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070431358}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1297055003}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -145}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2070431360
+--- !u!114 &1785123655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070431358}
+  m_GameObject: {fileID: 1785123650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d1f9a59a10e2664186863675baf73d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 156
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: 'For now it''s hardcoded
-
-    menu can be made dynamic'
---- !u!222 &2070431361
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070431358}
-  m_CullTransparentMesh: 0
+  health_max: 4
+  health_current: 4
+  attack: 4
+  class_name: Mage
+  description: Balanced character.

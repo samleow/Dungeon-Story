@@ -352,7 +352,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 175935895}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1044382928}
+        m_MethodName: SelectedOption
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &175935895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +482,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 394132414}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1044382928}
+        m_MethodName: SelectedOption
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &394132414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1263,6 +1285,7 @@ GameObject:
   - component: {fileID: 1044382925}
   - component: {fileID: 1044382924}
   - component: {fileID: 1044382923}
+  - component: {fileID: 1044382928}
   m_Layer: 5
   m_Name: QuestionsCanvas
   m_TagString: Untagged
@@ -1390,6 +1413,24 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1044382928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044382921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2903170e928dfbe41af87ab9adafdf82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionText: {fileID: 1690128937}
+  option1: {fileID: 1291701009}
+  option2: {fileID: 1901006348}
+  option3: {fileID: 1386318999}
+  option4: {fileID: 872287573}
+  timer: {fileID: 1107728184}
 --- !u!1 &1099062792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1512,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1099062795}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1044382928}
+        m_MethodName: PressedConfirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1099062795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2012,7 +2064,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1304813436}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1044382928}
+        m_MethodName: SelectedOption
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1304813436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2365,7 +2428,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1423298845}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1044382928}
+        m_MethodName: SelectedOption
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1423298845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,6 +2641,7 @@ GameObject:
   - component: {fileID: 1664401494}
   - component: {fileID: 1664401493}
   - component: {fileID: 1664401492}
+  - component: {fileID: 1664401495}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2622,6 +2697,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664401495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664401491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df83d15f37701df44ae0631f7a636ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestionMenu: {fileID: 1044382921}
 --- !u!1 &1690128935
 GameObject:
   m_ObjectHideFlags: 0
