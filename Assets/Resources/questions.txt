@@ -1,0 +1,25 @@
+What is under the section of specifications/requirements for the SDLC?
+Functional Requirements
+Non-Functional Requirements
+Both of the above
+c
+1
+Which of the following is part of Requirements Specification for the SDLC?
+Project Mission Statement
+Software Requirement Specification
+Both of the above
+c
+1
+Which of the following is not a Non-Functional Requirement?
+Usability
+Simplicity
+Reliability
+b
+2
+What does a Data Dictionary focus on?
+Problem domain terms
+Implementation terms
+Infographics
+a
+3
+
