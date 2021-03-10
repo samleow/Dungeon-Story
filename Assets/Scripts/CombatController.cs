@@ -1,50 +1,136 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CombatController : MonoBehaviour
 {
     // List of questions and answer options
     public List<QuestionSet> questions = new List<QuestionSet>();
-    int question_current = -1;
+    int _question_current = -1;
     public GameObject QuestionMenu = null;
+    [HideInInspector]
+    // -1   = still doing quiz
+    // 0    = fail
+    // 1    = pass
+    public int quiz_status = -1;
+
+    GameData _gameData = null;
 
     // Start is called before the first frame update
     void Start()
     {
+        _gameData = GameData.getInstance;
+
         if(QuestionMenu.activeSelf)
             QuestionMenu.SetActive(false);
 
-        // Extract questions and answer options from question bank and store into list here
-        // TODO
+        // Extract questions and answer options from question bank and store into list
+        AddQuestions();
 
-        // temporary hardcoded qns as template after getting from qn bank
-        // can use for loop to iterate through qns
-        QuestionSet q1 = new QuestionSet();
-        q1.question = "1 + 1 = ?";
-        q1.answer = 2;
-        q1.difficulty = 1;
-        q1.time_to_answer = 25;
-        q1.options.Add("0");
-        q1.options.Add("1");
-        q1.options.Add("2");
-        q1.options.Add("3");
-        questions.Add(q1);
+        // set enemy health based on current floor number
+        // if mini-boss
+        if (_gameData.floor_current < _gameData.boss_floor)
+        {
+            _gameData.enemy_health_current = _gameData.minion_health_max;
+        }
+        // if boss
+        else
+        {
+            _gameData.enemy_health_current = _gameData.boss_health_max;
+        }
 
         // set question number/counter
-        question_current = 0;
+        _question_current = 0;
         // set question set into quiz controller
-        QuestionMenu.GetComponent<QuizController>().questionSet = questions[question_current];
+        QuestionMenu.GetComponent<QuizController>().questionSet = questions[_question_current];
         // set qn screen on
         // can do fade in or animations before transition
         StartCoroutine(SetQnScreen(true,1));
     }
 
     // Update is called once per frame
-    /*void Update()
+    void Update()
     {
-        // TODO
-    }*/
+        switch (quiz_status)
+        {
+            // fail
+            case 0:
+                // deactivate quiz screen
+                StartCoroutine(SetQnScreen(false, 0));
+
+                // animate fail
+                // take damage
+                _gameData.player_health_current -= 1;
+
+                // if player dies, game over
+                if (_gameData.player_health_current <= 0)
+                {
+                    Debug.Log("Game Over! You lose!");
+
+                    // transition to player gameplay stats screen
+                    // upload highscore etc
+                    SceneManager.LoadScene("TitlePage");
+
+                    break;
+                }
+
+                quiz_status = -1;
+                _question_current = (_question_current+1)%questions.Count;
+                // set question set into quiz controller
+                QuestionMenu.GetComponent<QuizController>().questionSet = questions[_question_current];
+                // reactivate quiz screen, start next qn
+                StartCoroutine(SetQnScreen(true, 1));
+
+                break;
+
+            // pass
+            case 1:
+                // deactivate quiz screen
+                StartCoroutine(SetQnScreen(false, 0));
+
+                // animate pass
+                // deal damage
+                _gameData.enemy_health_current -= _gameData.player_attack;
+
+                // if enemy dies, battle over
+                if (_gameData.enemy_health_current <= 0)
+                {
+                    _gameData.enemy_health_current = 0;
+                    Debug.Log("Battle Over! You win!");
+
+                    // Game over, player wins
+                    // transition to player gameplay stats screen and upload highscore etc
+                    if (_gameData.floor_current >= _gameData.boss_floor)
+                    {
+                        Debug.Log("Game Over! Victory!");
+                        SceneManager.LoadScene("TitlePage");
+                    }
+                    // transition to next floor
+                    else
+                    {
+                        _gameData.floor_current++;
+                        SceneManager.LoadScene("DoorPage");
+                    }
+
+                    break;
+                }
+
+                quiz_status = -1;
+                _question_current = (_question_current + 1) % questions.Count;
+                // set question set into quiz controller
+                QuestionMenu.GetComponent<QuizController>().questionSet = questions[_question_current];
+                // reactivate quiz screen, start next qn
+                StartCoroutine(SetQnScreen(true, 1));
+
+                break;
+
+            // still doing quiz
+            default:
+                break;
+        }
+
+    }
 
     // TODO implement fade in/out for question screen
     IEnumerator SetQnScreen(bool active, float seconds)
@@ -55,6 +141,21 @@ public class CombatController : MonoBehaviour
             QuestionMenu.SetActive(active);
     }
 
-
+    void AddQuestions()
+    {
+        // TODO
+        // temporary hardcoded qns as template after getting from qn bank
+        // can use for loop to iterate through qns
+        QuestionSet q1 = new QuestionSet();
+        q1.question = "1 + 1 = ?";
+        q1.answer = 2;
+        q1.difficulty = 1;
+        q1.time_to_answer = 8;
+        q1.options.Add("0");
+        q1.options.Add("1");
+        q1.options.Add("2");
+        q1.options.Add("3");
+        questions.Add(q1);
+    }
 
 }

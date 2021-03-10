@@ -1431,6 +1431,7 @@ MonoBehaviour:
   option3: {fileID: 1386318999}
   option4: {fileID: 872287573}
   timer: {fileID: 1107728184}
+  combatController: {fileID: 1664401495}
 --- !u!1 &1099062792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1843,7 @@ GameObject:
   - component: {fileID: 1297055001}
   - component: {fileID: 1297055000}
   - component: {fileID: 1297055004}
+  - component: {fileID: 1297055005}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1946,6 +1948,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9265edf0f78ab2b4593292d2dc31f94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1297055005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297054999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342a8a9e094bcc0448ac78142dd4abc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_health: {fileID: 660716758}
+  player_attack: {fileID: 2041099605}
+  enemy_health: {fileID: 2081399826}
 --- !u!1 &1304133172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   QuestionMenu: {fileID: 1044382921}
+  quiz_status: -1
 --- !u!1 &1690128935
 GameObject:
   m_ObjectHideFlags: 0

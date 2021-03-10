@@ -32,7 +32,15 @@ public class UIEventsController : MonoBehaviour
     // Select Character
     public void SelectCharacter(Character character)
     {
-        GameData.getInstance.player_char = character;
+        GameData gd = GameData.getInstance;
+        gd.player_health_max = character.health_max;
+        gd.player_health_current = character.health_current;
+        gd.player_attack = character.attack;
+        gd.player_class_name = character.class_name;
+        gd.player_description = character.description;
+
+        gd.floor_current = 1;
+        gd.score_current = 0;
     }
 
     // Select door

@@ -12,13 +12,16 @@ public class QuizController : MonoBehaviour
     public Text option3 = null;
     public Text option4 = null;
     public Text timer = null;
+    public CombatController combatController = null;
 
-    private int selected_ans = -1;
-    private float normTime = 0f;
+    private int _selected_ans = -1;
+    private float _normTime = 0f;
+    private bool _quiz_started = false;
 
-    // Start is called before the first frame update
     void OnEnable()
     {
+        _quiz_started = true;
+        Debug.Log("Quiz Started!");
         if (questionSet == null)
         {
             Debug.Log("Quiz Controller does not have question set! Check Combat Controller!");
@@ -28,20 +31,22 @@ public class QuizController : MonoBehaviour
             // Set the questions and options in UI
             SetUI();
             // Set normalized time back to 0
-            normTime = 0f;
+            _normTime = 0f;
+            // Set selected ans back
+            _selected_ans = -1;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // TODO
-
         // if time ran out, send fail to combat controller
-        if (TimeRanOut())
+        if (TimeRanOut() && _quiz_started)
         {
             // fail
             Debug.Log("Time's up!");
+            combatController.quiz_status = 0;
+            _quiz_started = false;
         }
     }
 
@@ -59,11 +64,11 @@ public class QuizController : MonoBehaviour
     // possible to change into coroutine
     bool TimeRanOut()
     {
-        normTime += Time.deltaTime;
+        _normTime += Time.deltaTime;
 
-        timer.text = (questionSet.time_to_answer - normTime).ToString("0.00");
+        timer.text = (questionSet.time_to_answer - _normTime).ToString("0.00");
 
-        if (normTime >= questionSet.time_to_answer)
+        if (_normTime >= questionSet.time_to_answer)
         {
             timer.text = "0.00";
             return true;
@@ -76,26 +81,32 @@ public class QuizController : MonoBehaviour
     // for option buttons
     public void SelectedOption(int option)
     {
-        selected_ans = option;
+        _selected_ans = option;
     }
 
     public void PressedConfirm()
     {
         // TODO
 
+        // can do feedback/animation for pass/fail/no option etc. before closing
+
         // if answer correctly before time ran out, send pass to combat controller
-        if (selected_ans == questionSet.answer)
+        if (_selected_ans == questionSet.answer)
         {
             // pass
             Debug.Log("Pass!");
+
+            combatController.quiz_status = 1;
             return;
         }
 
         // if answer wrongly, send fail to combat controller
-        if (selected_ans != -1)
+        if (_selected_ans != -1)
         {
             // fail
             Debug.Log("Fail!");
+
+            combatController.quiz_status = 0;
             return;
         }
 
