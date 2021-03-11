@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections;
+using System.Collections.Generic;
 
 public class GameData
 {
@@ -41,6 +42,12 @@ public class GameData
     public string player_class_name =   "-";
     public string player_description =  "-";
 
+    public List<List<string>> options = new List<List<string>>();
+    public List<string> questions = new List<string>();
+
+    public List<string> choices = new List<string>();
+    public ArrayList answers = new ArrayList();
+    public ArrayList difficulty = new ArrayList();
     #endregion
 
 
