@@ -50,7 +50,8 @@ public class loadQues : MonoBehaviour
         PlayerPrefs.SetInt("visited", 1);
         
         // Read from preloaded questions
-        PlayerPrefs.DeleteKey("visited");
+
+        //PlayerPrefs.DeleteKey("visited");
 
         randomNumber = rnd.Next(0, _gameData.questions.Count - 1);
         texts = GameObject.Find("Questions").GetComponent<Text>();
