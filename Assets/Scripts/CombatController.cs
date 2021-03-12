@@ -95,7 +95,7 @@ public class CombatController : MonoBehaviour
 
                     // transition to player gameplay stats screen
                     // upload highscore etc
-                    SceneManager.LoadScene("TitlePage");
+                    SceneManager.LoadScene("GameOverPage");
 
                     break;
                 }

@@ -28,7 +28,7 @@ public class preloadLeaderboard : MonoBehaviour
 
             //Write some text to the test.txt file
             StreamWriter writer = new StreamWriter(path, false);
-            for (int i = 0; i < nameScores.Length - 1; i++){
+            for (int i = 0; i < nameScores.Length; i++){
                 writer.WriteLine(nameScores[i]);
                 if(nameScores[i].Equals(PlayerPrefs.GetString("Name")))
                 {
