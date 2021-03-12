@@ -10,13 +10,17 @@ public class QuizController : MonoBehaviour
     public Text option1 = null;
     public Text option2 = null;
     public Text option3 = null;
-    public Text option4 = null;
+    //public Text option4 = null;
     public Text timer = null;
+    public GameObject timer_obj = null;
     public CombatController combatController = null;
 
-    private int _selected_ans = -1;
+    //private int _selected_ans = -1;
     private float _normTime = 0f;
     private bool _quiz_started = false;
+
+    // time for each boss question (in seconds)
+    private float _qnTime = 20f;
 
     void OnEnable()
     {
@@ -33,20 +37,24 @@ public class QuizController : MonoBehaviour
             // Set normalized time back to 0
             _normTime = 0f;
             // Set selected ans back
-            _selected_ans = -1;
+            //_selected_ans = -1;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if time ran out, send fail to combat controller
-        if (TimeRanOut() && _quiz_started)
+        // if enemy is Boss
+        if (combatController.isBoss)
         {
-            // fail
-            Debug.Log("Time's up!");
-            combatController.quiz_status = 0;
-            _quiz_started = false;
+            // if time ran out, send fail to combat controller
+            if (TimeRanOut() && _quiz_started)
+            {
+                // fail
+                Debug.Log("Time's up!");
+                combatController.quiz_status = 0;
+                _quiz_started = false;
+            }
         }
     }
 
@@ -56,9 +64,15 @@ public class QuizController : MonoBehaviour
         option1.text = questionSet.options[0];
         option2.text = questionSet.options[1];
         option3.text = questionSet.options[2];
-        option4.text = questionSet.options[3];
+        //option4.text = questionSet.options[3];
 
-        timer.text = questionSet.time_to_answer.ToString("0.00");
+        if (combatController.isBoss)
+            timer_obj.SetActive(false);
+        else
+        {
+            timer_obj.SetActive(false);
+            timer.text = _qnTime.ToString("0.00");
+        }
     }
 
     // possible to change into coroutine
@@ -66,9 +80,9 @@ public class QuizController : MonoBehaviour
     {
         _normTime += Time.deltaTime;
 
-        timer.text = (questionSet.time_to_answer - _normTime).ToString("0.00");
+        timer.text = (_qnTime - _normTime).ToString("0.00");
 
-        if (_normTime >= questionSet.time_to_answer)
+        if (_normTime >= _qnTime)
         {
             timer.text = "0.00";
             return true;
@@ -79,12 +93,33 @@ public class QuizController : MonoBehaviour
     #region UI functions
 
     // for option buttons
-    public void SelectedOption(int option)
+    public void SelectedOption(string option)
     {
-        _selected_ans = option;
+        // TODO
+
+        // can do feedback/animation for pass/fail/no option etc. before closing
+
+        // if answer correctly before time ran out, send pass to combat controller
+        if (option == questionSet.answer)
+        {
+            // pass
+            Debug.Log("Pass!");
+
+            combatController.quiz_status = 1;
+            return;
+        }
+        // if answer wrongly, send fail to combat controller
+        else
+        {
+            // fail
+            Debug.Log("Fail!");
+
+            combatController.quiz_status = 0;
+            return;
+        }
     }
 
-    public void PressedConfirm()
+    /*public void PressedConfirm()
     {
         // TODO
 
@@ -112,7 +147,7 @@ public class QuizController : MonoBehaviour
 
         // if no option selected
         Debug.Log("No option selected!");
-    }
+    }*/
 
     #endregion
 

@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 public class CombatController : MonoBehaviour
 {
     // List of questions and answer options
-    public List<QuestionSet> questions = new List<QuestionSet>();
-    int _question_current = -1;
+    //public List<QuestionSet> questions = new List<QuestionSet>();
+    //int _question_current = -1;
     public GameObject QuestionMenu = null;
     [HideInInspector]
     // -1   = still doing quiz
     // 0    = fail
     // 1    = pass
     public int quiz_status = -1;
+    [HideInInspector]
+    public bool isBoss = false;
 
     GameData _gameData = null;
 
@@ -25,25 +27,37 @@ public class CombatController : MonoBehaviour
         if(QuestionMenu.activeSelf)
             QuestionMenu.SetActive(false);
 
-        // Extract questions and answer options from question bank and store into list
-        AddQuestions();
+        if (_gameData.difficulty == -1)
+            _gameData.difficulty = 1;
+        if (_gameData.streak == -1)
+            _gameData.streak = 0;
+        if (_gameData.score_current == -1)
+            _gameData.score_current = 0;
 
-        // set enemy health based on current floor number
-        // if mini-boss
+        // Extract questions and answer options from question bank and store into list
+        //AddQuestions();
+
+            // set enemy health based on current floor number
+            // if mini-boss
         if (_gameData.floor_current < _gameData.boss_floor)
         {
+            isBoss = false;
             _gameData.enemy_health_current = _gameData.minion_health_max;
         }
         // if boss
         else
         {
+            isBoss = true;
             _gameData.enemy_health_current = _gameData.boss_health_max;
         }
 
         // set question number/counter
-        _question_current = 0;
+        //_question_current = 0;
         // set question set into quiz controller
-        QuestionMenu.GetComponent<QuizController>().questionSet = questions[_question_current];
+        //QuestionMenu.GetComponent<QuizController>().questionSet = questions[_question_current];
+
+        GetNewQn();
+
         // set qn screen on
         // can do fade in or animations before transition
         StartCoroutine(SetQnScreen(true,1));
@@ -52,12 +66,21 @@ public class CombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         switch (quiz_status)
         {
             // fail
             case 0:
                 // deactivate quiz screen
                 StartCoroutine(SetQnScreen(false, 0));
+
+                // difficulty progression
+                _gameData.streak--;
+                if (_gameData.streak <= -2 && _gameData.difficulty > 1)
+                {
+                    _gameData.streak = 0;
+                    _gameData.difficulty--;
+                }
 
                 // animate fail
                 // take damage
@@ -76,9 +99,12 @@ public class CombatController : MonoBehaviour
                 }
 
                 quiz_status = -1;
-                _question_current = (_question_current+1)%questions.Count;
+                //_question_current = (_question_current+1)%questions.Count;
                 // set question set into quiz controller
-                QuestionMenu.GetComponent<QuizController>().questionSet = questions[_question_current];
+                //QuestionMenu.GetComponent<QuizController>().questionSet = questions[_question_current];
+
+                GetNewQn();
+
                 // reactivate quiz screen, start next qn
                 StartCoroutine(SetQnScreen(true, 1));
 
@@ -88,6 +114,17 @@ public class CombatController : MonoBehaviour
             case 1:
                 // deactivate quiz screen
                 StartCoroutine(SetQnScreen(false, 0));
+
+                // difficulty progression
+                _gameData.streak++;
+                if (_gameData.streak >= 2 && _gameData.difficulty < 3)
+                {
+                    _gameData.difficulty++;
+                    _gameData.streak = 0;
+                }
+
+                // TODO Scoring
+                _gameData.score_current += _gameData.difficulty*_gameData.streak;
 
                 // animate pass
                 // deal damage
@@ -117,9 +154,12 @@ public class CombatController : MonoBehaviour
                 }
 
                 quiz_status = -1;
-                _question_current = (_question_current + 1) % questions.Count;
+                //_question_current = (_question_current + 1) % questions.Count;
                 // set question set into quiz controller
-                QuestionMenu.GetComponent<QuizController>().questionSet = questions[_question_current];
+                //QuestionMenu.GetComponent<QuizController>().questionSet = questions[_question_current];
+
+                GetNewQn();
+
                 // reactivate quiz screen, start next qn
                 StartCoroutine(SetQnScreen(true, 1));
 
@@ -141,21 +181,36 @@ public class CombatController : MonoBehaviour
             QuestionMenu.SetActive(active);
     }
 
-    void AddQuestions()
+    void GetNewQn()
+    {
+        if (_gameData.questions[_gameData.difficulty - 1].Count <= 0)
+        {
+            Debug.Log("Ran out of available questions!!");
+            return;
+        }
+
+        System.Random rd = new System.Random();
+        int rd_no = rd.Next(0, _gameData.questions[_gameData.difficulty - 1].Count - 1);
+
+        QuestionMenu.GetComponent<QuizController>().questionSet = _gameData.questions[_gameData.difficulty - 1][rd_no];
+        _gameData.questions[_gameData.difficulty - 1].RemoveAt(rd_no);
+    }
+
+    /*void AddQuestions()
     {
         // TODO
         // temporary hardcoded qns as template after getting from qn bank
         // can use for loop to iterate through qns
         QuestionSet q1 = new QuestionSet();
         q1.question = "1 + 1 = ?";
-        q1.answer = 2;
+        q1.answer = "b";
         q1.difficulty = 1;
-        q1.time_to_answer = 8;
+        //q1.time_to_answer = 8;
         q1.options.Add("0");
         q1.options.Add("1");
         q1.options.Add("2");
         q1.options.Add("3");
         questions.Add(q1);
-    }
+    }*/
 
 }

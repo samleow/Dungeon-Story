@@ -13,7 +13,7 @@ public class loadQues : MonoBehaviour
     // Start is called before the first frame update
 
     GameData _gameData = GameData.getInstance;
-    List<string> choices = new List<string>();
+    //List<string> choices = new List<string>();
     static int difficulty = 1;
     static int streak = 0;
 
@@ -21,7 +21,7 @@ public class loadQues : MonoBehaviour
     {
         Text texts;
         int randomNumber = 0;
-        int points = 0;
+        //int points = 0;
         int count = 1;
         
         Text option1,option2,option3;

@@ -6,10 +6,10 @@ public class QuestionSet
 {
     public string question = "";
     public List<string> options = new List<string>();
-    public int answer = -1;
+    public string answer = "";
     public int difficulty = -1;
     // in seconds
-    public int time_to_answer = -1;
+    //public int time_to_answer = -1;
 
     public QuestionSet() { }
 }

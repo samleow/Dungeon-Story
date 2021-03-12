@@ -7,7 +7,15 @@ public class GameData
 
     private static GameData _instance = null;
 
-    private GameData() {  }
+    private GameData()
+    {
+        // Initialising questions with 3 different difficulties
+        // 1 list for 1 difficulty
+        // Eg. questions[0] == difficulty 1
+        questions.Add(new List<QuestionSet>());
+        questions.Add(new List<QuestionSet>());
+        questions.Add(new List<QuestionSet>());
+    }
 
     public static GameData getInstance
     {
@@ -42,6 +50,8 @@ public class GameData
     public string player_class_name =   "-";
     public string player_description =  "-";
 
+    #region Not Used
+
     public List<List<string>> options_difficulty_1 = new List<List<string>>();
     public List<List<string>> options_difficulty_2 = new List<List<string>>();
     public List<List<string>> options_difficulty_3 = new List<List<string>>();
@@ -60,8 +70,16 @@ public class GameData
 
     public List<ArrayList> answers_storage = new List<ArrayList>();
 
+    #endregion
+
     //public ArrayList answers = new ArrayList();
     //public ArrayList difficulty = new ArrayList();
+
+    public List<List<QuestionSet>> questions = new List<List<QuestionSet>>();
+
+    public int difficulty = -1;
+    public int streak = -1;
+
     #endregion
 
 

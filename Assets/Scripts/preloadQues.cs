@@ -10,17 +10,79 @@ public class preloadQues : MonoBehaviour
 {
     GameData _gameData = GameData.getInstance;
     List<string> choices = new List<string>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    
     public void loadQues()
     {
         StartCoroutine(loadQuestions());
     }
 
+    IEnumerator loadQuestions()
+    {
+        int diff1, diff2, diff3;
+        string[] questionBank;
+        UnityWebRequest www = UnityWebRequest.Get("http://valerianlow123.000webhostapp.com/getQuestions.php");
+        yield return www.SendWebRequest();
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            questionBank = www.downloadHandler.text.Split(',', '\n');
+            
+            // iterator may go past list length if database data not following format
+            int i = 0;
+
+            diff1 = int.Parse(questionBank[i]);
+            diff2 = int.Parse(questionBank[++i]);
+            diff3 = int.Parse(questionBank[++i]);
+
+            int j = 0;
+            while (j < diff1)
+            {
+                QuestionSet qs = new QuestionSet();
+                qs.question = questionBank[++i];
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.answer = questionBank[++i];
+                qs.difficulty = 1;
+                _gameData.questions[0].Add(qs);
+                j++;
+            }
+            j = 0;
+            while (j < diff2)
+            {
+                QuestionSet qs = new QuestionSet();
+                qs.question = questionBank[++i];
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.answer = questionBank[++i];
+                qs.difficulty = 2;
+                _gameData.questions[1].Add(qs);
+                j++;
+            }
+            j = 0;
+            while (j < diff3)
+            {
+                QuestionSet qs = new QuestionSet();
+                qs.question = questionBank[++i];
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.answer = questionBank[++i];
+                qs.difficulty = 3;
+                _gameData.questions[2].Add(qs);
+                j++;
+            }
+
+            SceneManager.LoadScene("CharacterPage");
+        }
+        
+    }
+
+/*
     IEnumerator loadQuestions()
     {
         int diff1, diff2, diff3;
@@ -43,7 +105,7 @@ public class preloadQues : MonoBehaviour
             }
             writer.Close();
         }
-        
+
         string path2 = "Assets/Resources/questions.txt";
 
         //Read the text from directly from the question.txt file
@@ -51,7 +113,7 @@ public class preloadQues : MonoBehaviour
         diff1 = int.Parse(reader.ReadLine());
         diff2 = int.Parse(reader.ReadLine());
         diff3 = int.Parse(reader.ReadLine());
-       
+
         while (diff1 > 0)
         {
             _gameData.questions_difficulty_1.Add(reader.ReadLine());
@@ -103,14 +165,10 @@ public class preloadQues : MonoBehaviour
         _gameData.answers_storage.Add(_gameData.answers_difficulty_1);
         _gameData.answers_storage.Add(_gameData.answers_difficulty_2);
         _gameData.answers_storage.Add(_gameData.answers_difficulty_3);
-        
+
         reader.Close();
-       
+
         SceneManager.LoadScene("CharacterPage");
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }*/
+
 }

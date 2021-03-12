@@ -355,13 +355,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1044382928}
         m_MethodName: SelectedOption
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 2
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: c
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &175935895
@@ -565,7 +565,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc6f9bae9da28a54880aacdabf2edbda, type: 3}
   m_Name: 
@@ -1305,7 +1305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1044382922
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1433,7 +1433,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044382921}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2903170e928dfbe41af87ab9adafdf82, type: 3}
   m_Name: 
@@ -1442,8 +1442,8 @@ MonoBehaviour:
   option1: {fileID: 1291701009}
   option2: {fileID: 1901006348}
   option3: {fileID: 1386318999}
-  option4: {fileID: 872287573}
   timer: {fileID: 1107728184}
+  timer_obj: {fileID: 1189201519}
   combatController: {fileID: 1664401495}
 --- !u!1 &1099062792
 GameObject:
@@ -1976,6 +1976,9 @@ MonoBehaviour:
   player_health: {fileID: 660716758}
   player_attack: {fileID: 2041099605}
   enemy_health: {fileID: 2081399826}
+  floor: {fileID: 0}
+  buffCanvas: {fileID: 0}
+  buff: {fileID: 0}
 --- !u!1 &1304133172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,13 +2100,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1044382928}
         m_MethodName: SelectedOption
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: b
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1304813436
@@ -2461,13 +2464,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1044382928}
         m_MethodName: SelectedOption
-        m_Mode: 3
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: a
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1423298845
@@ -2741,6 +2744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestionMenu: {fileID: 1044382921}
   quiz_status: -1
+  isBoss: 0
 --- !u!1 &1690128935
 GameObject:
   m_ObjectHideFlags: 0
