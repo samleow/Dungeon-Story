@@ -42,12 +42,26 @@ public class GameData
     public string player_class_name =   "-";
     public string player_description =  "-";
 
-    public List<List<string>> options = new List<List<string>>();
-    public List<string> questions = new List<string>();
+    public List<List<string>> options_difficulty_1 = new List<List<string>>();
+    public List<List<string>> options_difficulty_2 = new List<List<string>>();
+    public List<List<string>> options_difficulty_3 = new List<List<string>>();
 
-    public List<string> choices = new List<string>();
-    public ArrayList answers = new ArrayList();
-    public ArrayList difficulty = new ArrayList();
+    public List<List<List<string>>> options_storage = new List<List<List<string>>>();
+
+    public List<string> questions_difficulty_1 = new List<string>();
+    public List<string> questions_difficulty_2 = new List<string>();
+    public List<string> questions_difficulty_3 = new List<string>();
+
+    public List<List<string>> questions_storage = new List<List<string>>();
+
+    public ArrayList answers_difficulty_1 = new ArrayList();
+    public ArrayList answers_difficulty_2 = new ArrayList();
+    public ArrayList answers_difficulty_3 = new ArrayList();
+
+    public List<ArrayList> answers_storage = new List<ArrayList>();
+
+    //public ArrayList answers = new ArrayList();
+    //public ArrayList difficulty = new ArrayList();
     #endregion
 
 
