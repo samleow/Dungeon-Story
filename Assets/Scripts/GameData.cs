@@ -31,6 +31,7 @@ public class GameData
     #endregion
 
     #region Game Data Variables
+    public string user =                "";
 
     public int world_selected =         -1;
     public int stage_selected =         -1;

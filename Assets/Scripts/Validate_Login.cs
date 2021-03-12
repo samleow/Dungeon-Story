@@ -10,6 +10,8 @@ public class Validate_Login : MonoBehaviour
 {
     // Start is called before the first frame update
     public Text textField;
+    GameData _gameData = GameData.getInstance;
+
     void Start()
     {
         
@@ -17,7 +19,7 @@ public class Validate_Login : MonoBehaviour
     public void ValidateLogin()
     {
         //Debug.Log("Clicked");
-
+        
         InputField userField = GameObject.Find("login_username").GetComponent<InputField>();
         InputField pwField = GameObject.Find("login_password").GetComponent<InputField>();
         string username = userField.text;
@@ -52,7 +54,8 @@ public class Validate_Login : MonoBehaviour
             string error = www.downloadHandler.text;
             if (error.Equals("Success"))
             {
-                PlayerPrefs.SetString("Name", user);
+                //PlayerPrefs.SetString("Name", user);
+                _gameData.user = user;
                 SceneManager.LoadScene("TitlePage");
             }
             else

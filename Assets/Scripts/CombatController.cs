@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class CombatController : MonoBehaviour
 {
@@ -90,6 +91,7 @@ public class CombatController : MonoBehaviour
                 if (_gameData.player_health_current <= 0)
                 {
                     Debug.Log("Game Over! You lose!");
+                    StartCoroutine(UpdateLeaderboard());
 
                     // transition to player gameplay stats screen
                     // upload highscore etc
@@ -196,6 +198,37 @@ public class CombatController : MonoBehaviour
         _gameData.questions[_gameData.difficulty - 1].RemoveAt(rd_no);
     }
 
+    IEnumerator UpdateLeaderboard()
+    {
+        GameData _gameData = GameData.getInstance;
+        string username = _gameData.user;
+        int score = _gameData.score_current;
+
+        WWWForm form = new WWWForm();
+        form.AddField("username", username);
+        form.AddField("score", score);
+        UnityWebRequest www = UnityWebRequest.Post("http://valerianlow123.000webhostapp.com/updateScore.php", form);
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+            string error = www.downloadHandler.text;
+            if (error.Equals("Success"))
+            {
+                SceneManager.LoadScene("LeaderboardPage");
+            }
+            else
+            {
+
+            }
+
+        }
+    }
     /*void AddQuestions()
     {
         // TODO
