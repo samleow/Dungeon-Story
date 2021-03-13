@@ -9,7 +9,17 @@ public class GameplayUIController : MonoBehaviour
     public Text player_health = null;
     public Text player_attack = null;
     public Text enemy_health = null;
+    public Text enemy_attack = null;
     public Text floor = null;
+
+
+    //health bar
+    public HealthBar player_HealthBar = null;
+    public HealthBar enemy_HealthBar = null;
+    private float player_SlowHP = -1;
+    private float enemy_SlowHP = -1;
+    private float player_slowTime = 0;
+    private float enemy_slowTime = 0;
 
     public GameObject buffCanvas = null;
     public Text buff = null;
@@ -21,6 +31,21 @@ public class GameplayUIController : MonoBehaviour
     {
         _gameData = GameData.getInstance;
 
+        // DoorPage will be equal to null
+        // BattlePage will NOT equal to null
+        if(player_HealthBar!=null)
+        {
+            player_HealthBar.SetMaxHealth(_gameData.player_health_max);
+            player_SlowHP = _gameData.player_health_max;
+        }
+
+        if(enemy_HealthBar!=null)
+        {
+            // here need add minion or boss max health
+            enemy_HealthBar.SetMaxHealth(_gameData.minion_health_max);
+            enemy_SlowHP = _gameData.minion_health_max;
+        }
+
         if (buffCanvas!=null)
             buffCanvas.SetActive(false);
     }
@@ -28,8 +53,49 @@ public class GameplayUIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // DoorPage will be equal to null
+        // BattlePage will NOT equal to null
+        if(player_HealthBar!=null)
+        {
+            if(player_SlowHP != _gameData.player_health_current)
+            {
+                
+                player_SlowHP = Mathf.Lerp(player_SlowHP,_gameData.player_health_current, player_slowTime);
+                //Debug.Log(player_SlowHP);
+                player_HealthBar.SetHealth(player_SlowHP);
+                // increase the decimal point for the float for slower HP decrease
+                player_slowTime += 0.000000001f + Time.deltaTime;
+            }
+            else
+            {
+                // reset time
+                player_slowTime = 0;
+            }
+            
+        }
+
+        if(enemy_HealthBar!=null)
+        {
+            if(enemy_SlowHP != _gameData.enemy_health_current)
+            {
+                enemy_SlowHP = Mathf.Lerp(enemy_SlowHP,_gameData.enemy_health_current, enemy_slowTime);
+                enemy_HealthBar.SetHealth(enemy_SlowHP);
+                // increase the decimal point for the float for slower HP decrease
+                enemy_slowTime += 0.000000001f + Time.deltaTime;
+            }
+            else
+            {
+                // reset time
+                enemy_slowTime = 0;
+            }
+            
+        }
+
+
+        //Debug.Log(_gameData.player_health_current);
         player_health.text = _gameData.player_health_current.ToString();
         player_attack.text = _gameData.player_attack.ToString();
+
 
         if(enemy_health != null)
             enemy_health.text = _gameData.enemy_health_current.ToString();
