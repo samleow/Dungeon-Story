@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DB_Connect : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class DB_Connect : MonoBehaviour
 
     //Initialize values
     Text textField;
+
+    // create account popup
+    public GameObject menuWindow;
 
     public void Start()
     {
@@ -80,6 +84,11 @@ public class DB_Connect : MonoBehaviour
                 clearTextBoxes();
                 textField = GameObject.Find("username_error_text").GetComponent<Text>();
                 textField.text = "Username has already been used!";
+            }
+            else
+            {
+                // suppose if account has been successfully created 
+                menuWindow.SetActive(true);
             }
         }
     }
