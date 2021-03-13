@@ -42,8 +42,11 @@ public class GameData
 
     public int boss_floor =             4;
     public int enemy_health_current =   10;
+    public int enemy_attack =           -1;
     public int minion_health_max =      10;
     public int boss_health_max =        20;
+    
+
 
     public int player_health_max =      -1;
     public int player_health_current =  -1;

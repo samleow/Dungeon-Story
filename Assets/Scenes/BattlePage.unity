@@ -3069,6 +3069,8 @@ MonoBehaviour:
   player_HealthBar: {fileID: 1142655640}
   enemy_HealthBar: {fileID: 2086543858}
   buffCanvas: {fileID: 0}
+  buffATK: {fileID: 0}
+  heal: {fileID: 0}
   buff: {fileID: 0}
 --- !u!1 &1304133172
 GameObject:
@@ -4058,6 +4060,7 @@ MonoBehaviour:
   QuestionMenu: {fileID: 1044382921}
   quiz_status: -1
   isBoss: 0
+  enemy_HealthBar: {fileID: 2086543858}
 --- !u!1 &1690128935
 GameObject:
   m_ObjectHideFlags: 0
@@ -4213,7 +4216,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 0
 --- !u!1 &1855335038
 GameObject:
   m_ObjectHideFlags: 0

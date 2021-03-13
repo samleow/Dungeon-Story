@@ -20,6 +20,8 @@ public class CombatController : MonoBehaviour
 
     GameData _gameData = null;
 
+    public HealthBar enemy_HealthBar = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,12 +46,16 @@ public class CombatController : MonoBehaviour
         {
             isBoss = false;
             _gameData.enemy_health_current = _gameData.minion_health_max;
+            _gameData.enemy_attack = 1;
+            enemy_HealthBar.SetMaxHealth(_gameData.minion_health_max);
         }
         // if boss
         else
         {
             isBoss = true;
+            _gameData.enemy_attack = 2;
             _gameData.enemy_health_current = _gameData.boss_health_max;
+            enemy_HealthBar.SetMaxHealth(_gameData.boss_health_max);
         }
 
         // set question number/counter
@@ -85,7 +91,11 @@ public class CombatController : MonoBehaviour
 
                 // animate fail
                 // take damage
-                _gameData.player_health_current -= 1;
+                
+                //_gameData.player_health_current -= 1;
+                _gameData.player_health_current = _gameData.player_health_current - _gameData.enemy_attack;
+                
+                
 
                 // if player dies, game over
                 if (_gameData.player_health_current <= 0)

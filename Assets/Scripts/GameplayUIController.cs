@@ -43,9 +43,9 @@ public class GameplayUIController : MonoBehaviour
 
         if(enemy_HealthBar!=null)
         {
-            // here need add minion or boss max health
-            enemy_HealthBar.SetMaxHealth(_gameData.minion_health_max);
-            enemy_SlowHP = _gameData.minion_health_max;
+            // minion or boss max health
+            enemy_HealthBar.SetMaxHealth(_gameData.enemy_health_current);
+            enemy_SlowHP = _gameData.enemy_health_current;
         }
 
         if (buffCanvas!=null)
@@ -97,6 +97,13 @@ public class GameplayUIController : MonoBehaviour
         //Debug.Log(_gameData.player_health_current);
         player_health.text = _gameData.player_health_current.ToString();
         player_attack.text = _gameData.player_attack.ToString();
+
+        // DoorPage will be equal to null
+        // BattlePage will NOT equal to null
+        if(enemy_attack!=null)
+        {
+            enemy_attack.text = _gameData.enemy_attack.ToString();
+        }
 
 
         if(enemy_health != null)
