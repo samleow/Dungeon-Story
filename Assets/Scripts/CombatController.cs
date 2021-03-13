@@ -93,7 +93,10 @@ public class CombatController : MonoBehaviour
                 // take damage
                 
                 //_gameData.player_health_current -= 1;
-                _gameData.player_health_current = _gameData.player_health_current - _gameData.enemy_attack;
+                if(_gameData.player_health_current != 0)// to prevent negative health
+                {
+                    _gameData.player_health_current = _gameData.player_health_current - _gameData.enemy_attack;
+                }
                 
                 
 
@@ -101,11 +104,13 @@ public class CombatController : MonoBehaviour
                 if (_gameData.player_health_current <= 0)
                 {
                     Debug.Log("Game Over! You lose!");
+                    
                     StartCoroutine(UpdateLeaderboard());
-
+                    
                     // transition to player gameplay stats screen
                     // upload highscore etc
-                    SceneManager.LoadScene("GameOverPage");
+                    //SceneManager.LoadScene("GameOverPage");
+                    StartCoroutine(PauseWhile(0.5f));
 
                     break;
                 }
@@ -239,6 +244,13 @@ public class CombatController : MonoBehaviour
 
         }
     }
+
+    IEnumerator PauseWhile(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        SceneManager.LoadScene("GameOverPage");
+    }
+
     /*void AddQuestions()
     {
         // TODO
