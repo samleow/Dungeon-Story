@@ -6,16 +6,20 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEditor;
 using System.IO;
+using UnityEngine.SceneManagement;
 using System.Diagnostics;
 
 public class makeLeaderboard : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Sprite m_Sprite;
+    public Image m_Image;
     private Text text;
     GameData _gameData = GameData.getInstance;
 
     void Start()
-    { 
+    {
+        m_Sprite = Resources.Load("UISprite", typeof(Sprite)) as Sprite;
         int x = -220;   //position for text label
         int y = 170;    //position for text label
         var colour = Color.white;
@@ -25,18 +29,17 @@ public class makeLeaderboard : MonoBehaviour
         arial = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
         // Create canvas
-        GameObject canvasGO = new GameObject();
-        canvasGO.name = "Canvas";
+        GameObject canvasGO = GameObject.Find("Canvas");
+        /*canvasGO.name = "Canvas";
         canvasGO.AddComponent<Canvas>();
         canvasGO.AddComponent<CanvasScaler>();
-        canvasGO.AddComponent<GraphicRaycaster>();
+        canvasGO.AddComponent<GraphicRaycaster>();*/
 
         // Get canvas from the GameObject.
         Canvas canvas;
         canvas = canvasGO.GetComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-
-        // Create text 
+        //canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+       
         GameObject textGO = new GameObject();
         textGO.transform.parent = canvasGO.transform;
         textGO.AddComponent<Text>();
@@ -196,6 +199,10 @@ public class makeLeaderboard : MonoBehaviour
         }
     }
     
+    void goBack()
+    {
+        SceneManager.LoadScene("TitlePage");
+    }
     // Update is called once per frame
     void Update()
     {

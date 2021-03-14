@@ -44,4 +44,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverPage.unity
     guid: 60508e599129dd34397a5716bfd40cc0
+  - enabled: 1
+    path: Assets/Scenes/IndividualReportPage.unity
+    guid: a1932bb075542364abbc0897825711a3
+  - enabled: 1
+    path: Assets/Scenes/VictoryPage.unity
+    guid: 88e605dab3b2e524295502f2cda20045
   m_configObjects: {}
