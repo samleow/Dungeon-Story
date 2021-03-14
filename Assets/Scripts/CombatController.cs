@@ -158,8 +158,7 @@ public class CombatController : MonoBehaviour
                     if (_gameData.floor_current >= _gameData.boss_floor)
                     {
                         Debug.Log("Game Over! Victory!");
-                        StartCoroutine(UpdateLeaderboard());
-                        SceneManager.LoadScene("LeaderboardPage");
+                        SceneManager.LoadScene("TitlePage");
                     }
                     // transition to next floor
                     else
@@ -203,8 +202,7 @@ public class CombatController : MonoBehaviour
     {
         if (_gameData.questions[_gameData.difficulty - 1].Count <= 0)
         {
-            
-            Debug.Log("Ran out of available questions!!");                            
+            Debug.Log("Ran out of available questions!!");
             return;
         }
 

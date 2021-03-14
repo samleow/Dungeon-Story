@@ -11,7 +11,6 @@ public class preloadLeaderboard : MonoBehaviour
     void Start()
     {
         StartCoroutine(loadLeaderboard());
-        StartCoroutine(loadReport());
     }
 
     IEnumerator loadLeaderboard()
@@ -40,31 +39,8 @@ public class preloadLeaderboard : MonoBehaviour
             writer.Close();
         }
     }
-
-    IEnumerator loadReport()
-    {
-        UnityWebRequest www = UnityWebRequest.Get("http://valerianlow123.000webhostapp.com/generateSummaryReport.php");
-        yield return www.SendWebRequest();
-        if (www.isNetworkError || www.isHttpError)
-        {
-            Debug.Log(www.error);
-        }
-        else
-        {
-            string[] report = www.downloadHandler.text.Split(',');
-            string path = "Assets/Resources/report.txt";
-
-            //Write some text to the test.txt file
-            StreamWriter writer = new StreamWriter(path, false);
-            for (int i = 0; i < report.Length; i++)
-            {
-                writer.WriteLine(report[i]);
-            }
-            writer.Close();
-        }
-    }
-    // Update is called once per frame
-    void Update()
+            // Update is called once per frame
+     void Update()
     {
         
     }
