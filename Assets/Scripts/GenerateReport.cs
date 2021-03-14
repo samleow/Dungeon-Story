@@ -1,7 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEditor;
+using System.IO;
+using System.Diagnostics;
 
 public class GenerateReport : MonoBehaviour
 {
@@ -15,8 +20,21 @@ public class GenerateReport : MonoBehaviour
         Font arial;
         arial = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
-        for (int i = 0; i < 10; i++)
+        // Read from preloaded report
+        string path = "Assets/Resources/report.txt";
+        string line;
+        string result = "";
+
+        //Read the text from directly from the report.txt file
+        StreamReader reader = new StreamReader(path);
+        line = reader.ReadToEnd();
+        string[] report = line.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+        reader.Close();
+
+        for (int i = 0; i < report.Length-1; i=i+4)
         {
+            result = "Question: " + report[i + 1] + "\n[Difficulty: " + report[i] + "]\nTotal Correct Attempts: " + report[i + 2] + "\nTotal Wrong Attempts: " + report[i + 3] + "\nTotal Attempts:" + (int.Parse(report[i + 2]) + int.Parse(report[i + 3])).ToString();
+
             VerticalLayoutGroup canvasGO = GameObject.Find("Content").GetComponent<VerticalLayoutGroup>();
             GameObject textGO = new GameObject();
             textGO.transform.parent = canvasGO.transform;
@@ -24,16 +42,17 @@ public class GenerateReport : MonoBehaviour
 
             // Edit text attribute
             text = textGO.GetComponent<Text>();
-            text.text = "LEADERBOARD";
-            text.fontSize = 35;
+            text.text = result;
+            text.fontSize = 30;
             text.font = arial;
             text.alignment = TextAnchor.MiddleLeft;
+            text.color = Color.black;
 
             // Positioning and size of text
             RectTransform rectTransform;
             rectTransform = text.GetComponent<RectTransform>();
-            rectTransform.localPosition = new Vector3(x, y, 0);
-            rectTransform.sizeDelta = new Vector2(900, 60);
+            //rectTransform.localPosition = new Vector3(x, y, 0);
+            rectTransform.sizeDelta = new Vector2(900, 180);
             y = y - 60;
         }
     }

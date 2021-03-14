@@ -1,3 +1,5 @@
+vlql
+113
 Tom
 100
 Jimmy
@@ -12,8 +14,6 @@ Richard
 20
 David
 20
-vlql
-3
 a
 2
 testwch
