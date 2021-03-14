@@ -8,6 +8,7 @@ public class QuestionSet
     public List<string> options = new List<string>();
     public string answer = "";
     public int difficulty = -1;
+    public int QID = -1;
     // in seconds
     //public int time_to_answer = -1;
 

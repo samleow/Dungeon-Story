@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class QuizController : MonoBehaviour
 {
@@ -104,7 +105,7 @@ public class QuizController : MonoBehaviour
         {
             // pass
             Debug.Log("Pass!");
-
+            StartCoroutine(updateReport("correct", questionSet.QID));
             combatController.quiz_status = 1;
             return;
         }
@@ -113,12 +114,29 @@ public class QuizController : MonoBehaviour
         {
             // fail
             Debug.Log("Fail!");
-
+            StartCoroutine(updateReport("wrong", questionSet.QID));
             combatController.quiz_status = 0;
             return;
         }
     }
 
+    IEnumerator updateReport(string correct_Or_Wrong, int QID)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("answer", correct_Or_Wrong);
+        form.AddField("QID", QID);
+        UnityWebRequest www = UnityWebRequest.Post("http://valerianlow123.000webhostapp.com/updateReport.php", form);
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.downloadHandler.text);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+        }
+    }
     /*public void PressedConfirm()
     {
         // TODO

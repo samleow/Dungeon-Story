@@ -34,7 +34,6 @@ public class preloadLeaderboard : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("Rank", i / 2);
                     PlayerPrefs.SetString("Score", nameScores[i + 1]);
-                    break;
                 }
             }
             writer.Close();

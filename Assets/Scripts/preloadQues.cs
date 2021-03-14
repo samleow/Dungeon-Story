@@ -46,6 +46,7 @@ public class preloadQues : MonoBehaviour
                 qs.options.Add(questionBank[++i]);
                 qs.options.Add(questionBank[++i]);
                 qs.answer = questionBank[++i];
+                qs.QID = int.Parse(questionBank[++i]);
                 qs.difficulty = 1;
                 _gameData.questions[0].Add(qs);
                 j++;
@@ -59,6 +60,7 @@ public class preloadQues : MonoBehaviour
                 qs.options.Add(questionBank[++i]);
                 qs.options.Add(questionBank[++i]);
                 qs.answer = questionBank[++i];
+                qs.QID = int.Parse(questionBank[++i]);
                 qs.difficulty = 2;
                 _gameData.questions[1].Add(qs);
                 j++;
@@ -72,6 +74,7 @@ public class preloadQues : MonoBehaviour
                 qs.options.Add(questionBank[++i]);
                 qs.options.Add(questionBank[++i]);
                 qs.answer = questionBank[++i];
+                qs.QID = int.Parse(questionBank[++i]);
                 qs.difficulty = 3;
                 _gameData.questions[2].Add(qs);
                 j++;

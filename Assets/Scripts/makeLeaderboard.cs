@@ -6,11 +6,13 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEditor;
 using System.IO;
+using System.Diagnostics;
 
 public class makeLeaderboard : MonoBehaviour
 {
     // Start is called before the first frame update
     private Text text;
+    GameData _gameData = GameData.getInstance;
 
     void Start()
     { 
@@ -58,15 +60,17 @@ public class makeLeaderboard : MonoBehaviour
         
         //Read the text from directly from the leaderboard.txt file
         StreamReader reader = new StreamReader(path);
-        line = reader.ReadToEnd();
-        string[] nameScores = line.Split('\n');
+        line = reader.ReadToEnd();        
+        string[] nameScores = line.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
         reader.Close();
 
         //print leaderboard
         for (int i = 0; i < 10; i = i + 2)
         {
-            if (nameScores[i].Equals(PlayerPrefs.GetString("Name")))
+            UnityEngine.Debug.Log(nameScores[i]);
+            if (string.Compare(nameScores[i],_gameData.user)==0)
             {
+                
                 colour = Color.yellow;
             }
             //disp Rank
