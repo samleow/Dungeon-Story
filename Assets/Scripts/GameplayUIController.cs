@@ -22,8 +22,10 @@ public class GameplayUIController : MonoBehaviour
     private float enemy_slowTime = 0;
 
     public GameObject buffCanvas = null;
-    public GameObject buffATK = null;
-    public GameObject heal = null;
+    public SpriteRenderer buffSprite = null;
+
+    public Sprite buffATK = null;
+    public Sprite heal = null;
     public Text buff = null;
 
     GameData _gameData = null;
@@ -117,8 +119,9 @@ public class GameplayUIController : MonoBehaviour
         buff.text = "Attack + 1";
         _gameData.player_attack++;
         _gameData.floor_current++;
-        heal.SetActive(false);
-        buffATK.SetActive(true);
+        //heal.SetActive(false);
+        //buffATK.SetActive(true);
+        buffSprite.sprite = buffATK;
         buffCanvas.SetActive(true);
         StartCoroutine(SetBuffScreen(false,1));
     }
@@ -129,9 +132,10 @@ public class GameplayUIController : MonoBehaviour
         _gameData.player_health_current++;
         _gameData.player_health_max++;
         _gameData.floor_current++;
-        buffATK.SetActive(false);
+        //buffATK.SetActive(false);
+        //heal.SetActive(true);
         buffCanvas.SetActive(true);
-        heal.SetActive(true);
+        buffSprite.sprite = heal;
         StartCoroutine(SetBuffScreen(false, 1));
     }
 
