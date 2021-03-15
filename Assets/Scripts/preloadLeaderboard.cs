@@ -7,6 +7,7 @@ using System.IO;
 
 public class preloadLeaderboard : MonoBehaviour
 {
+    GameData _gameData = GameData.getInstance;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,19 +26,20 @@ public class preloadLeaderboard : MonoBehaviour
         else
         {
             string[] nameScores = www.downloadHandler.text.Split(' ');
-            string path = "Assets/Resources/leaderboard.txt";
+            //string path = "Assets/Resources/leaderboard.txt";
 
             //Write some text to the test.txt file
-            StreamWriter writer = new StreamWriter(path, false);
+            //StreamWriter writer = new StreamWriter(path, false);
             for (int i = 0; i < nameScores.Length; i++){
-                writer.WriteLine(nameScores[i]);
+                _gameData.score.Add(nameScores[i]);
+               // writer.WriteLine(nameScores[i]);
                 if(nameScores[i].Equals(PlayerPrefs.GetString("Name")))
                 {
                     PlayerPrefs.SetInt("Rank", i / 2);
                     PlayerPrefs.SetString("Score", nameScores[i + 1]);
                 }
             }
-            writer.Close();
+            //writer.Close();
         }
     }
 
