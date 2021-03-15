@@ -135,7 +135,7 @@ public class CombatController : MonoBehaviour
 
                 // difficulty progression
                 _gameData.streak++;
-                if (_gameData.streak >= 2 && _gameData.difficulty < 3)
+                if (_gameData.streak > 2 && _gameData.difficulty < 3)
                 {
                     _gameData.difficulty++;
                     _gameData.streak = 0;
