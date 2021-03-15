@@ -32,6 +32,7 @@ public class GameData
 
     #region Game Data Variables
     public string user =                "";
+    public int rank = -1;
 
     public int world_selected =         -1;
     public int stage_selected =         -1;
@@ -81,6 +82,7 @@ public class GameData
 
     public List<List<QuestionSet>> questions = new List<List<QuestionSet>>();
     public List<string> score = new List<string>();
+    public List<string> report = new List<string>();
 
     public int difficulty = -1;
     public int streak = -1;

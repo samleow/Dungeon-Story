@@ -9,15 +9,18 @@ using System;
 public class preloadLeaderboard : MonoBehaviour
 {
     GameData _gameData = GameData.getInstance;
+    
     // Start is called before the first frame update
     void Start()
-    {
+    {               
         StartCoroutine(loadLeaderboard());
         StartCoroutine(loadReport());
     }
 
+ 
+
     IEnumerator loadLeaderboard()
-    {
+    {        
         UnityWebRequest www = UnityWebRequest.Get("http://valerianlow123.000webhostapp.com/getLeaderboard.php");
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
@@ -28,7 +31,7 @@ public class preloadLeaderboard : MonoBehaviour
         {
             string[] nameScores = www.downloadHandler.text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             //string path = "Assets/Resources/leaderboard.txt";
-
+            _gameData.score = new List<string>();
             //Write some text to the test.txt file
             //StreamWriter writer = new StreamWriter(path, false);
             for (int i = 0; i < nameScores.Length; i++){
@@ -36,8 +39,10 @@ public class preloadLeaderboard : MonoBehaviour
                // writer.WriteLine(nameScores[i]);
                 if(nameScores[i].Equals(_gameData.user))
                 {
-                    PlayerPrefs.SetInt("Rank", i / 2);
-                    PlayerPrefs.SetString("Score", nameScores[i + 1]);
+                   /* PlayerPrefs.SetInt("Rank", i / 2);                    
+                    PlayerPrefs.SetString("Score", nameScores[i + 1]);*/
+                    _gameData.rank = i / 2;
+                    _gameData.score_current = int.Parse(nameScores[i + 1]);
                 }
             }
             //writer.Close();
@@ -46,6 +51,7 @@ public class preloadLeaderboard : MonoBehaviour
 
     IEnumerator loadReport()
     {
+        
         UnityWebRequest www = UnityWebRequest.Get("http://valerianlow123.000webhostapp.com/generateSummaryReport.php");
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
@@ -54,16 +60,18 @@ public class preloadLeaderboard : MonoBehaviour
         }
         else
         {
-            string[] report = www.downloadHandler.text.Split(',');
-            string path = "Assets/Resources/report.txt";
+            string[] report = www.downloadHandler.text.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            _gameData.report = new List<string>();
+            //string path = "Assets/Resources/report.txt";
 
             //Write some text to the test.txt file
-            StreamWriter writer = new StreamWriter(path, false);
+            //StreamWriter writer = new StreamWriter(path, false);
             for (int i = 0; i < report.Length; i++)
             {
-                writer.WriteLine(report[i]);
+                //writer.WriteLine(report[i]);
+                _gameData.report.Add(report[i]);
             }
-            writer.Close();
+            //writer.Close();
         }
     }
     // Update is called once per frame
