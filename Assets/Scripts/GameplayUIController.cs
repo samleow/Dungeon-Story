@@ -12,7 +12,6 @@ public class GameplayUIController : MonoBehaviour
     public Text enemy_attack = null;
     public Text floor = null;
 
-
     //health bar
     public HealthBar player_HealthBar = null;
     public HealthBar enemy_HealthBar = null;
@@ -49,6 +48,8 @@ public class GameplayUIController : MonoBehaviour
             enemy_HealthBar.SetMaxHealth(_gameData.enemy_health_current);
             enemy_SlowHP = _gameData.enemy_health_current;
         }
+
+
 
         if (buffCanvas!=null)
             buffCanvas.SetActive(false);

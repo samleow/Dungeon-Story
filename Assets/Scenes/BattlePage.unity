@@ -370,7 +370,7 @@ RectTransform:
   m_GameObject: {fileID: 89093524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1419856073}
   m_Father: {fileID: 1297055003}
@@ -378,8 +378,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -311.5, y: 73.5}
-  m_SizeDelta: {x: 200, y: 350}
+  m_AnchoredPosition: {x: -245.95, y: -45}
+  m_SizeDelta: {x: 459.10828, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &89093526
 MonoBehaviour:
@@ -394,15 +394,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.4009434, b: 0.4009434, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bc617278fb690314588b6e6319e43fd7, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1381,7 +1381,7 @@ RectTransform:
   m_GameObject: {fileID: 779230834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1342560624}
   m_Father: {fileID: 1297055003}
@@ -1389,8 +1389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 321, y: -107.9}
-  m_SizeDelta: {x: 200, y: 350}
+  m_AnchoredPosition: {x: 243, y: -37}
+  m_SizeDelta: {x: 306.42007, y: 449.7688}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &779230836
 MonoBehaviour:
@@ -1405,15 +1405,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4395227, g: 1, b: 0.39999998, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6d90f4f455aa03643994fd88f62a1e34, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -3258,7 +3258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1342560624
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3488,7 +3488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1419856073
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4061,6 +4061,13 @@ MonoBehaviour:
   QuestionMenu: {fileID: 1044382921}
   quiz_status: -1
   isBoss: 0
+  enemyImg: {fileID: 89093526}
+  enemyMiniBossImg: {fileID: 21300000, guid: bc617278fb690314588b6e6319e43fd7, type: 3}
+  enemyBossImg: {fileID: 21300000, guid: 176ef50233d7dad4d87f9a6baba8768e, type: 3}
+  playerImg: {fileID: 779230836}
+  warriorImg: {fileID: 21300000, guid: 63f523f74c039464f949031e1e5f1041, type: 3}
+  mageImg: {fileID: 21300000, guid: 90ec60f3539ee724db40b3eeee142737, type: 3}
+  rangerImg: {fileID: 21300000, guid: 6d90f4f455aa03643994fd88f62a1e34, type: 3}
   enemy_HealthBar: {fileID: 2086543858}
 --- !u!1 &1690128935
 GameObject:

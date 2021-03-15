@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class CombatController : MonoBehaviour
 {
@@ -17,6 +18,14 @@ public class CombatController : MonoBehaviour
     public int quiz_status = -1;
     [HideInInspector]
     public bool isBoss = false;
+    public Image enemyImg = null;
+    public Sprite enemyMiniBossImg = null;
+    public Sprite enemyBossImg = null;
+    public Image playerImg = null;
+
+    public Sprite warriorImg = null;
+    public Sprite mageImg = null;
+    public Sprite rangerImg = null;
 
     GameData _gameData = null;
 
@@ -48,6 +57,7 @@ public class CombatController : MonoBehaviour
             _gameData.enemy_health_current = _gameData.minion_health_max;
             _gameData.enemy_attack = 1;
             enemy_HealthBar.SetMaxHealth(_gameData.minion_health_max);
+            enemyImg.sprite = enemyMiniBossImg;
         }
         // if boss
         else
@@ -56,6 +66,20 @@ public class CombatController : MonoBehaviour
             _gameData.enemy_attack = 2;
             _gameData.enemy_health_current = _gameData.boss_health_max;
             enemy_HealthBar.SetMaxHealth(_gameData.boss_health_max);
+            enemyImg.sprite = enemyBossImg;
+        }
+        
+        if(_gameData.player_class_name == "Warrior")
+        {
+            playerImg.sprite = warriorImg;
+        }
+        else if(_gameData.player_class_name == "Mage")
+        {
+            playerImg.sprite = mageImg;
+        }
+        else
+        {
+            playerImg.sprite = rangerImg;
         }
 
         // set question number/counter
