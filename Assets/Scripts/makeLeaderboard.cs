@@ -62,16 +62,16 @@ public class makeLeaderboard : MonoBehaviour
         string line;
         
         //Read the text from directly from the leaderboard.txt file
-        StreamReader reader = new StreamReader(path);
+        /*StreamReader reader = new StreamReader(path);
         line = reader.ReadToEnd();        
         string[] nameScores = line.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-        reader.Close();
+        reader.Close();*/
 
         //print leaderboard
         for (int i = 0; i < 10; i = i + 2)
         {
-            UnityEngine.Debug.Log(nameScores[i]);
-            if (string.Compare(nameScores[i],_gameData.user)==0)
+            //UnityEngine.Debug.Log(nameScores[i]);
+            if (string.Compare(_gameData.score[i],_gameData.user)==0)
             {
                 
                 colour = Color.yellow;
@@ -81,7 +81,7 @@ public class makeLeaderboard : MonoBehaviour
             textGO.transform.parent = canvasGO.transform;
             textGO.AddComponent<Text>();
             text = textGO.GetComponent<Text>();
-            if (i != 0 && nameScores[i + 1] == nameScores[i - 1])
+            if (i != 0 && _gameData.score[i+ 1] == _gameData.score[i- 1])
             {
                 text.text = "=";
             }
@@ -104,7 +104,7 @@ public class makeLeaderboard : MonoBehaviour
             textGO.transform.parent = canvasGO.transform;
             textGO.AddComponent<Text>();
             text = textGO.GetComponent<Text>();
-            text.text = nameScores[i];
+            text.text = _gameData.score[i];
             text.fontSize = 30;
             text.font = arial;
             text.alignment = TextAnchor.MiddleLeft;
@@ -119,7 +119,7 @@ public class makeLeaderboard : MonoBehaviour
             textGO.transform.parent = canvasGO.transform;
             textGO.AddComponent<Text>();
             text = textGO.GetComponent<Text>();
-            text.text = nameScores[i + 1];
+            text.text = _gameData.score[i+1];
             text.fontSize = 30;
             text.font = arial;
             text.alignment = TextAnchor.MiddleCenter;
@@ -172,7 +172,7 @@ public class makeLeaderboard : MonoBehaviour
             textGO.transform.parent = canvasGO.transform;
             textGO.AddComponent<Text>();
             text = textGO.GetComponent<Text>();
-            text.text = PlayerPrefs.GetString("Name");
+            text.text = _gameData.user;
             text.fontSize = 30;
             text.font = arial;
             text.alignment = TextAnchor.MiddleLeft;

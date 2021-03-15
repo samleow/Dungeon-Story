@@ -80,6 +80,7 @@ public class GameData
     //public ArrayList difficulty = new ArrayList();
 
     public List<List<QuestionSet>> questions = new List<List<QuestionSet>>();
+    public List<string> score = new List<string>();
 
     public int difficulty = -1;
     public int streak = -1;
