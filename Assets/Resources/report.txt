@@ -5,23 +5,23 @@ Functional Requirements describe the ____ of system functionalities?
 1
 Use cases describe the ____ of system functionalities?
 6
-2
+3
 1
 What does a project mission statement consist of?
-7
+9
 1
 1
 What is under the section of specifications/requirements for the SDLC?
-5
-2
+6
+3
 1
 Which of the following is part of Requirements Specification for the SDLC?
-9
+10
 3
 1
 What does a Use Case Model consist of?
-9
-2
+10
+3
 1
 Which of the following are types of Use Case associations?
 2
@@ -33,11 +33,11 @@ Requirements elicitation includes?
 2
 Which of the following are Attributes?
 7
-4
+5
 2
 Which class represents the interaction between Actor and System?
 3
-6
+7
 2
 Which of the following are Objects?
 3

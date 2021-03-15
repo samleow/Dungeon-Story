@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEditor;
 using System.IO;
+using System;
 
 public class preloadLeaderboard : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class preloadLeaderboard : MonoBehaviour
         }
         else
         {
-            string[] nameScores = www.downloadHandler.text.Split(' ');
+            string[] nameScores = www.downloadHandler.text.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             //string path = "Assets/Resources/leaderboard.txt";
 
             //Write some text to the test.txt file
@@ -33,7 +34,7 @@ public class preloadLeaderboard : MonoBehaviour
             for (int i = 0; i < nameScores.Length; i++){
                 _gameData.score.Add(nameScores[i]);
                // writer.WriteLine(nameScores[i]);
-                if(nameScores[i].Equals(PlayerPrefs.GetString("Name")))
+                if(nameScores[i].Equals(_gameData.user))
                 {
                     PlayerPrefs.SetInt("Rank", i / 2);
                     PlayerPrefs.SetString("Score", nameScores[i + 1]);

@@ -172,7 +172,7 @@ public class makeLeaderboard : MonoBehaviour
             textGO.transform.parent = canvasGO.transform;
             textGO.AddComponent<Text>();
             text = textGO.GetComponent<Text>();
-            text.text = PlayerPrefs.GetString("Name");
+            text.text = _gameData.user;
             text.fontSize = 30;
             text.font = arial;
             text.alignment = TextAnchor.MiddleLeft;
