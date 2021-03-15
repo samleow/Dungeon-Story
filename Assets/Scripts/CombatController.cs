@@ -104,7 +104,8 @@ public class CombatController : MonoBehaviour
                 if (_gameData.player_health_current <= 0)
                 {
                     Debug.Log("Game Over! You lose!");
-                    
+
+                    PlayerPrefs.SetString("Score", _gameData.score_current.ToString());
                     StartCoroutine(UpdateLeaderboard());
                     
                     // transition to player gameplay stats screen
@@ -158,6 +159,7 @@ public class CombatController : MonoBehaviour
                     if (_gameData.floor_current >= _gameData.boss_floor)
                     {
                         Debug.Log("Game Over! Victory!");
+                        PlayerPrefs.SetString("Score", _gameData.score_current.ToString());
                         StartCoroutine(UpdateLeaderboard());
                         SceneManager.LoadScene("LeaderboardPage");
                     }
