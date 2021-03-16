@@ -113,8 +113,7 @@ public class CombatController : MonoBehaviour
 
                 // difficulty progression
                 _gameData.streak--;
-                _gameData.questions_wrong++;
-                _gameData.total_questions++;
+                
                 if (_gameData.streak <= -2 && _gameData.difficulty > 1)
                 {
                     _gameData.streak = 0;
@@ -123,9 +122,10 @@ public class CombatController : MonoBehaviour
 
                 // animate fail
                 // take damage
-                
+                _gameData.questions_wrong++;
+                _gameData.total_questions++;
                 //_gameData.player_health_current -= 1;
-                if(_gameData.player_health_current != 0)// to prevent negative health
+                if (_gameData.player_health_current != 0)// to prevent negative health
                 {
                     _gameData.player_health_current = _gameData.player_health_current - _gameData.enemy_attack;
                 }
@@ -135,6 +135,7 @@ public class CombatController : MonoBehaviour
                 // if player dies, game over
                 if (_gameData.player_health_current <= 0)
                 {
+                    quiz_status = -1;
                     Debug.Log("Game Over! You lose!");
 
                     PlayerPrefs.SetString("Score", _gameData.score_current.ToString());
@@ -164,8 +165,7 @@ public class CombatController : MonoBehaviour
             case 1:
                 // deactivate quiz screen
                 StartCoroutine(SetQnScreen(false, 0));
-                _gameData.questions_correct++;
-                _gameData.total_questions++;
+                
                 // difficulty progression
                 _gameData.streak++;
                 if (_gameData.streak > 2 && _gameData.difficulty < 3)
@@ -175,7 +175,9 @@ public class CombatController : MonoBehaviour
                 }
 
                 // TODO Scoring
-                _gameData.score_current += _gameData.difficulty*_gameData.streak;
+                //_gameData.score_current += _gameData.difficulty*_gameData.streak;
+                _gameData.score_current += _gameData.difficulty * 10;
+                _gameData.total_questions++;
 
                 // animate pass
                 // deal damage
