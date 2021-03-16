@@ -5,6 +5,31 @@ using UnityEngine.SceneManagement;
 
 public class UIEventsController : MonoBehaviour
 {
+    public GameObject warriorPartical = null;
+    public GameObject magePartical = null;
+    public GameObject rangerPartical = null;
+
+    public void activateWarrior()
+    {
+        warriorPartical.SetActive(true);
+        magePartical.SetActive(false);
+        rangerPartical.SetActive(false);
+    }
+
+    public void activateMage()
+    {
+        warriorPartical.SetActive(false);
+        magePartical.SetActive(true);
+        rangerPartical.SetActive(false);
+    }
+
+    public void activateRanger()
+    {
+        warriorPartical.SetActive(false);
+        magePartical.SetActive(false);
+        rangerPartical.SetActive(true);
+    }
+
     // Load Scene
     public void LoadScene(string newScene)
     {
