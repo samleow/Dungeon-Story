@@ -40,6 +40,7 @@ public class GameData
     public int room_current =           -1;
     public int floor_current =          -1;
     public int score_current =          -1;
+    public int high_score =             -1;
 
     public int boss_floor =             4;
     public int enemy_health_current =   10;
@@ -54,6 +55,10 @@ public class GameData
     public int player_attack = -1;
     public string player_class_name =   "-";
     public string player_description =  "-";
+
+    public int questions_correct = 0;
+    public int questions_wrong = 0;
+    public int total_questions = 0;
 
     #region Not Used
 

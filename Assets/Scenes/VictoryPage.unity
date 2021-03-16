@@ -289,7 +289,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LeaderboardPage
+          m_StringArgument: EndReportPage
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &551615063
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804575329}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e31ec675c6c5e5142b7ed94ce229aaab, type: 3}
   m_Name: 

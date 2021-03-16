@@ -17,7 +17,10 @@ public class preloadLeaderboard : MonoBehaviour
         StartCoroutine(loadReport());
     }
 
- 
+    public void preLeaderboard()
+    {
+        StartCoroutine(loadLeaderboard());
+    }
 
     IEnumerator loadLeaderboard()
     {        
@@ -42,7 +45,7 @@ public class preloadLeaderboard : MonoBehaviour
                    /* PlayerPrefs.SetInt("Rank", i / 2);                    
                     PlayerPrefs.SetString("Score", nameScores[i + 1]);*/
                     _gameData.rank = i / 2;
-                    _gameData.score_current = int.Parse(nameScores[i + 1]);
+                    _gameData.high_score = int.Parse(nameScores[i + 1]);
                 }
             }
             //writer.Close();

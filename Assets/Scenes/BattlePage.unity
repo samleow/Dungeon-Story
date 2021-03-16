@@ -2703,6 +2703,49 @@ RectTransform:
   m_AnchoredPosition: {x: -112.30002, y: -50}
   m_SizeDelta: {x: 224.54767, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1223730691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1223730693}
+  - component: {fileID: 1223730692}
+  m_Layer: 0
+  m_Name: script
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1223730692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223730691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e31ec675c6c5e5142b7ed94ce229aaab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1223730693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223730691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.26520035, y: -1.3828883, z: -415.82718}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1274139468
 GameObject:
   m_ObjectHideFlags: 0
@@ -4068,6 +4111,7 @@ MonoBehaviour:
   warriorImg: {fileID: 21300000, guid: 63f523f74c039464f949031e1e5f1041, type: 3}
   mageImg: {fileID: 21300000, guid: 90ec60f3539ee724db40b3eeee142737, type: 3}
   rangerImg: {fileID: 21300000, guid: 6d90f4f455aa03643994fd88f62a1e34, type: 3}
+  script: {fileID: 0}
   enemy_HealthBar: {fileID: 2086543858}
 --- !u!1 &1690128935
 GameObject:

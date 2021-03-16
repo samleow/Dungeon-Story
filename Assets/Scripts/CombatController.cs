@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using System.Net;
 
 public class CombatController : MonoBehaviour
 {
@@ -27,6 +29,8 @@ public class CombatController : MonoBehaviour
     public Sprite mageImg = null;
     public Sprite rangerImg = null;
 
+    public preloadLeaderboard test;
+
     GameData _gameData = null;
 
     public HealthBar enemy_HealthBar = null;
@@ -35,6 +39,8 @@ public class CombatController : MonoBehaviour
     void Start()
     {
         _gameData = GameData.getInstance;
+        test = GameObject.Find("script").GetComponent<preloadLeaderboard>();
+        
 
         if(QuestionMenu.activeSelf)
             QuestionMenu.SetActive(false);
@@ -107,6 +113,8 @@ public class CombatController : MonoBehaviour
 
                 // difficulty progression
                 _gameData.streak--;
+                _gameData.questions_wrong++;
+                _gameData.total_questions++;
                 if (_gameData.streak <= -2 && _gameData.difficulty > 1)
                 {
                     _gameData.streak = 0;
@@ -156,7 +164,8 @@ public class CombatController : MonoBehaviour
             case 1:
                 // deactivate quiz screen
                 StartCoroutine(SetQnScreen(false, 0));
-
+                _gameData.questions_correct++;
+                _gameData.total_questions++;
                 // difficulty progression
                 _gameData.streak++;
                 if (_gameData.streak > 2 && _gameData.difficulty < 3)
@@ -185,7 +194,8 @@ public class CombatController : MonoBehaviour
                         Debug.Log("Game Over! Victory!");
                         PlayerPrefs.SetString("Score", _gameData.score_current.ToString());
                         StartCoroutine(UpdateLeaderboard());
-                        SceneManager.LoadScene("LeaderboardPage");
+                        StartCoroutine(PauseVictory(0.5f));
+                        //SceneManager.LoadScene("LeaderboardPage");
                     }
                     // transition to next floor
                     else
@@ -261,15 +271,6 @@ public class CombatController : MonoBehaviour
         {
             Debug.Log(www.downloadHandler.text);
             string error = www.downloadHandler.text;
-            if (error.Equals("Success"))
-            {
-                SceneManager.LoadScene("LeaderboardPage");
-            }
-            else
-            {
-
-            }
-
         }
     }
 
@@ -277,6 +278,12 @@ public class CombatController : MonoBehaviour
     {
         yield return new WaitForSeconds(sec);
         SceneManager.LoadScene("GameOverPage");
+    }
+
+    IEnumerator PauseVictory(float sec)
+    {
+        yield return new WaitForSeconds(sec);   
+        SceneManager.LoadScene("VictoryPage");
     }
 
     /*void AddQuestions()

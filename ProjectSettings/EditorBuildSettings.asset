@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VictoryPage.unity
     guid: 88e605dab3b2e524295502f2cda20045
+  - enabled: 1
+    path: Assets/Scenes/EndReportPage.unity
+    guid: e22ca64c4b49a494abba772f7c3725f6
   m_configObjects: {}

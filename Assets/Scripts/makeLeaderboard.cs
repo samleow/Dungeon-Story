@@ -61,9 +61,10 @@ public class makeLeaderboard : MonoBehaviour
         {
             tempUser = _gameData.score[i];
             tempScore = int.Parse(_gameData.score[i + 1]);
-            if (tempScore == _gameData.score_current && !tempUser.Equals(_gameData.user) && outputUser == false)
+            if (tempScore == _gameData.high_score && !tempUser.Equals(_gameData.user) && outputUser == false)
             {
-                outputDetails(x, y, _gameData.user, _gameData.score_current, -1, rank, Color.yellow);
+                outputDetails(x, y, _gameData.user, _gameData.high_score, -1, rank, Color.yellow);
+                y = y - 60;
             }
             if (i > 0)
             {
@@ -80,7 +81,7 @@ public class makeLeaderboard : MonoBehaviour
             rank++; //increase rank
             colour = Color.white;
         }
-        if (_gameData.rank > 5)
+        if (_gameData.rank > 5 && outputUser==false)
         {
             // ...
             textGO = new GameObject();
@@ -99,7 +100,7 @@ public class makeLeaderboard : MonoBehaviour
 
             y = y - 80;
             colour = Color.yellow;
-            outputDetails(x, y, _gameData.user, _gameData.score_current, -1, _gameData.rank, colour);
+            outputDetails(x, y, _gameData.user, _gameData.high_score, -1, _gameData.rank, colour);
         }
     }
     
@@ -116,7 +117,7 @@ public class makeLeaderboard : MonoBehaviour
         textGO.transform.parent = canvasGO.transform;
         textGO.AddComponent<Text>();
         text = textGO.GetComponent<Text>();
-        if (score == score2)
+        if (score == score2 || (score== _gameData.high_score && !name.Equals(_gameData.user)))
         {
             text.text = "=";
         }
