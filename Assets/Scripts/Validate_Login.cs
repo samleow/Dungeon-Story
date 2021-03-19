@@ -52,16 +52,18 @@ public class Validate_Login : MonoBehaviour
         {
             Debug.Log(www.downloadHandler.text);
             string error = www.downloadHandler.text;
-            if (error.Equals("Success"))
+            if (error.Equals("Admin"))
             {
                 //PlayerPrefs.SetString("Name", user);
                 _gameData.user = user;
-                SceneManager.LoadScene("TitlePage");
+                _gameData.admin = true;
+                SceneManager.LoadScene("AdminPage");
             }
             else
             {
-                textField = GameObject.Find("error_text").GetComponent<Text>();
-                textField.text = error;
+                _gameData.user = user;
+                _gameData.admin = false;
+                SceneManager.LoadScene("TitlePage");
             }
         
         }

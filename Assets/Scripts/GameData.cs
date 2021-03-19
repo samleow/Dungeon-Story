@@ -31,6 +31,7 @@ public class GameData
     #endregion
 
     #region Game Data Variables
+    public bool admin = false;
     public string user =                "";
     public int rank = -1;
 
@@ -88,6 +89,12 @@ public class GameData
     public List<List<QuestionSet>> questions = new List<List<QuestionSet>>();
     public List<string> score = new List<string>();
     public List<string> report = new List<string>();
+
+    public QuestionSet currEditQues = new QuestionSet();
+
+    public int currQID = -1;
+    public int currI = -1;
+    public int currJ = -1;
 
     public int difficulty = -1;
     public int streak = -1;

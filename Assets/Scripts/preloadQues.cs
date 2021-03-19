@@ -5,6 +5,8 @@ using UnityEngine.Networking;
 using UnityEditor;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using System;
 
 public class preloadQues : MonoBehaviour
 {
@@ -16,10 +18,109 @@ public class preloadQues : MonoBehaviour
         StartCoroutine(loadQuestions());
     }
 
+    public void reloadQues()
+    {
+        StartCoroutine(reloadQuestions(1f,goToEditPage));
+    }
+
+    void goToEditPage()
+    {
+        SceneManager.LoadScene("EditQuestionsPage");
+    }
+
+    IEnumerator reloadQuestions(float time,Action doNext)
+    {
+        int diff1, diff2, diff3;
+        //_gameData.questions.Clear();
+        // _gameData.questions.TrimExcess();
+        // List<QuestionSet> newSet = new List<QuestionSet>();
+        //List<string> questionBank = new List<string>();
+        _gameData.questions = new List<List<QuestionSet>>();
+        _gameData.questions.Add(new List<QuestionSet>());
+        _gameData.questions.Add(new List<QuestionSet>());
+        _gameData.questions.Add(new List<QuestionSet>());
+        string[] questionBank;
+        UnityWebRequest www = UnityWebRequest.Get("http://valerianlow123.000webhostapp.com/getQuestions.php");
+        yield return www.SendWebRequest();
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            questionBank = www.downloadHandler.text.Split(',', '\n');
+
+            // iterator may go past list length if database data not following format
+            int i = 0;
+
+            diff1 = int.Parse(questionBank[i]);
+            diff2 = int.Parse(questionBank[++i]);
+            diff3 = int.Parse(questionBank[++i]);
+            UnityEngine.Debug.Log(diff1);
+            UnityEngine.Debug.Log(diff2);
+            UnityEngine.Debug.Log(diff3);
+            int j = 0;
+            //_gameData.questions.Add(newSet);
+            while (j < diff1)
+            {
+                QuestionSet qs = new QuestionSet();
+                qs.question = questionBank[++i];
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.answer = questionBank[++i];
+                qs.QID = int.Parse(questionBank[++i]);
+                qs.difficulty = 1;
+                _gameData.questions[0].Add(qs);
+                j++;
+            }
+            //_gameData.questions.Add(newSet);
+            j = 0;
+            while (j < diff2)
+            {
+                QuestionSet qs = new QuestionSet();
+                qs.question = questionBank[++i];
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.answer = questionBank[++i];
+                qs.QID = int.Parse(questionBank[++i]);
+                qs.difficulty = 2;
+                _gameData.questions[1].Add(qs);
+                j++;
+            }
+            //_gameData.questions.Add(newSet);
+            j = 0;
+            while (j < diff3)
+            {
+                QuestionSet qs = new QuestionSet();
+                qs.question = questionBank[++i];
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.options.Add(questionBank[++i]);
+                qs.answer = questionBank[++i];
+                qs.QID = int.Parse(questionBank[++i]);
+                qs.difficulty = 3;
+                _gameData.questions[2].Add(qs);
+                j++;
+            }
+            doNext();
+        }
+
+    }
+
     IEnumerator loadQuestions()
     {
         int diff1, diff2, diff3;
-        string[] questionBank;
+        //_gameData.questions.Clear();
+       // _gameData.questions.TrimExcess();
+       // List<QuestionSet> newSet = new List<QuestionSet>();
+        //List<string> questionBank = new List<string>();
+        _gameData.questions = new List<List<QuestionSet>>();
+        _gameData.questions.Add(new List<QuestionSet>());
+        _gameData.questions.Add(new List<QuestionSet>());
+        _gameData.questions.Add(new List<QuestionSet>());
+         string[] questionBank;
         UnityWebRequest www = UnityWebRequest.Get("http://valerianlow123.000webhostapp.com/getQuestions.php");
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
@@ -36,8 +137,11 @@ public class preloadQues : MonoBehaviour
             diff1 = int.Parse(questionBank[i]);
             diff2 = int.Parse(questionBank[++i]);
             diff3 = int.Parse(questionBank[++i]);
-
+            UnityEngine.Debug.Log(diff1);
+            UnityEngine.Debug.Log(diff2);
+            UnityEngine.Debug.Log(diff3);
             int j = 0;
+            //_gameData.questions.Add(newSet);
             while (j < diff1)
             {
                 QuestionSet qs = new QuestionSet();
@@ -51,6 +155,7 @@ public class preloadQues : MonoBehaviour
                 _gameData.questions[0].Add(qs);
                 j++;
             }
+            //_gameData.questions.Add(newSet);
             j = 0;
             while (j < diff2)
             {
@@ -65,6 +170,7 @@ public class preloadQues : MonoBehaviour
                 _gameData.questions[1].Add(qs);
                 j++;
             }
+            //_gameData.questions.Add(newSet);
             j = 0;
             while (j < diff3)
             {
@@ -79,8 +185,14 @@ public class preloadQues : MonoBehaviour
                 _gameData.questions[2].Add(qs);
                 j++;
             }
-
-            SceneManager.LoadScene("CharacterPage");
+            if (!_gameData.admin)
+            {
+                SceneManager.LoadScene("CharacterPage");
+            }
+            else
+            {
+                SceneManager.LoadScene("EditQuestionsPage");
+            }
         }
         
     }

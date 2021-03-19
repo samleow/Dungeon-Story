@@ -22,16 +22,6 @@ public class GenerateReport : MonoBehaviour
         Font arial;
         arial = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
-        // Read from preloaded report
-       /* string path = "Assets/Resources/report.txt";
-        string line;
-        string result = "";*/
-
-        //Read the text from directly from the report.txt file
-        /*StreamReader reader = new StreamReader(path);
-        line = reader.ReadToEnd();
-        string[] report = line.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-        reader.Close();*/
 
         for (int i = 0; i < _gameData.report.Count; i=i+4)
         {           
