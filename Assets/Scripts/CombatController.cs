@@ -186,7 +186,7 @@ public class CombatController : MonoBehaviour
                 // animate pass
                 // deal damage
                 _gameData.enemy_health_current -= _gameData.player_attack;
-                if(_gameData.enemy_health_current < 0)
+                if(_gameData.enemy_health_current < 0)// to prevent negative health
                 {
                     _gameData.enemy_health_current = 0;
                 }
