@@ -127,9 +127,11 @@ public class CombatController : MonoBehaviour
                 _gameData.questions_wrong++;
                 _gameData.total_questions++;
                 //_gameData.player_health_current -= 1;
-                if (_gameData.player_health_current != 0)// to prevent negative health
+                _gameData.player_health_current = _gameData.player_health_current - _gameData.enemy_attack;
+                if (_gameData.player_health_current < 0)// to prevent negative health
                 {
-                    _gameData.player_health_current = _gameData.player_health_current - _gameData.enemy_attack;
+                    _gameData.player_health_current = 0;
+                    
                 }
                 
                 
@@ -146,7 +148,7 @@ public class CombatController : MonoBehaviour
                     // transition to player gameplay stats screen
                     // upload highscore etc
                     //SceneManager.LoadScene("GameOverPage");
-                    StartCoroutine(PauseWhile(0.5f));
+                    StartCoroutine(PauseGameOverPage(0.5f));
 
                     break;
                 }
@@ -184,6 +186,10 @@ public class CombatController : MonoBehaviour
                 // animate pass
                 // deal damage
                 _gameData.enemy_health_current -= _gameData.player_attack;
+                if(_gameData.enemy_health_current < 0)
+                {
+                    _gameData.enemy_health_current = 0;
+                }
 
                 // if enemy dies, battle over
                 if (_gameData.enemy_health_current <= 0)
@@ -205,7 +211,8 @@ public class CombatController : MonoBehaviour
                     else
                     {
                         _gameData.floor_current++;
-                        SceneManager.LoadScene("DoorPage");
+                        //SceneManager.LoadScene("DoorPage");
+                        StartCoroutine(PauseDoorPage(0.5f));
                     }
 
                     break;
@@ -278,7 +285,7 @@ public class CombatController : MonoBehaviour
         }
     }
 
-    IEnumerator PauseWhile(float sec)
+    IEnumerator PauseGameOverPage(float sec)
     {
         yield return new WaitForSeconds(sec);
         SceneManager.LoadScene("GameOverPage");
@@ -288,6 +295,12 @@ public class CombatController : MonoBehaviour
     {
         yield return new WaitForSeconds(sec);   
         SceneManager.LoadScene("VictoryPage");
+    }
+
+    IEnumerator PauseDoorPage(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        SceneManager.LoadScene("DoorPage");
     }
 
     /*void AddQuestions()
