@@ -73,6 +73,8 @@ public class CombatController : MonoBehaviour
             _gameData.enemy_health_current = _gameData.boss_health_max;
             enemy_HealthBar.SetMaxHealth(_gameData.boss_health_max);
             enemyImg.sprite = enemyBossImg;
+            enemyImg.rectTransform.sizeDelta = new Vector2(700, 700);
+            enemyImg.rectTransform.anchoredPosition = new Vector2(-350, 0);
         }
         
         if(_gameData.player_class_name == "Warrior")

@@ -378,8 +378,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -245.95, y: -45}
-  m_SizeDelta: {x: 459.10828, y: 350}
+  m_AnchoredPosition: {x: -250, y: -17}
+  m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &89093526
 MonoBehaviour:
@@ -3092,6 +3092,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9265edf0f78ab2b4593292d2dc31f94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warriorPartical: {fileID: 0}
+  magePartical: {fileID: 0}
+  rangerPartical: {fileID: 0}
 --- !u!114 &1297055005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4111,7 +4114,7 @@ MonoBehaviour:
   warriorImg: {fileID: 21300000, guid: 63f523f74c039464f949031e1e5f1041, type: 3}
   mageImg: {fileID: 21300000, guid: 90ec60f3539ee724db40b3eeee142737, type: 3}
   rangerImg: {fileID: 21300000, guid: 6d90f4f455aa03643994fd88f62a1e34, type: 3}
-  script: {fileID: 0}
+  test: {fileID: 0}
   enemy_HealthBar: {fileID: 2086543858}
 --- !u!1 &1690128935
 GameObject:
