@@ -59,7 +59,7 @@ public class Validate_Login : MonoBehaviour
                 _gameData.admin = true;
                 SceneManager.LoadScene("AdminPage");
             }
-            else
+            else if(error.Equals("Student"))
             {
                 _gameData.user = user;
                 _gameData.admin = false;

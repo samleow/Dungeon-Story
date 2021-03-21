@@ -35,6 +35,9 @@ public class GameData
     public string user =                "";
     public int rank = -1;
 
+    public string currWorld = "";
+    public string currSect = "";
+
     public int world_selected =         -1;
     public int stage_selected =         -1;
 
@@ -91,6 +94,9 @@ public class GameData
     public List<string> report = new List<string>();
 
     public QuestionSet currEditQues = new QuestionSet();
+
+    public List<string> worldLocked= new List<string>();
+    public List<string> sectionLocked = new List<string>();
 
     public int currQID = -1;
     public int currI = -1;
