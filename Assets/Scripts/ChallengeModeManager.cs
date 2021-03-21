@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class ChallengeModeManager : MonoBehaviour
 
@@ -14,12 +15,18 @@ public class ChallengeModeManager : MonoBehaviour
     public Canvas gameEndCanvas = null;
     public Button startButton = null;
 
+ //   public ToggleGroup difficulty = null;
 
+    public Button playAgainButton = null;
+
+    public Text scoreText = null;
 
     public Text timertext = null;
     float currentTime = 0f;
     float startingTime = 30f;
 
+    public int score = 0;
+    public int questionNum = 0;
 
 
     // Start is called before the first frame update
@@ -30,6 +37,10 @@ public class ChallengeModeManager : MonoBehaviour
         gameplayCanvas.enabled = false;
         gameEndCanvas.enabled = false;
         startButton.onClick.AddListener(gameplayCanvasEnable);
+        // Option1Button.onClick.AddListener(delegate{CMQuizController.CheckAnswer("a");});
+        // Option2Button.onClick.AddListener(delegate{CMQuizController.CheckAnswer("b");});
+        // Option3Button.onClick.AddListener(delegate{CMQuizController.CheckAnswer("c");});
+
 
         //Timer Settings
         // for future difficulty settings
@@ -50,6 +61,12 @@ public class ChallengeModeManager : MonoBehaviour
             timer();
         }
 
+        if(currentTime == 0){
+            gameplayCanvas.enabled = false;
+            gameEndCanvas.enabled = true;
+            gameEndCanvasEnable();
+        }
+
     }
 
     void timer(){
@@ -65,10 +82,20 @@ public class ChallengeModeManager : MonoBehaviour
         startCanvas.enabled = false;
         gameplayCanvas.enabled = true;
         CMQuizController.generateQuestion();
+    }
+
+    void gameEndCanvasEnable(){
+        Debug.Log(CMQuizController.getScore());
+        this.score = CMQuizController.getScore();
+        this.questionNum = CMQuizController.getQuestionNum();
+        scoreText.text = string.Format("Score: {0}/{1}", this.score, this.questionNum);
+
 
     }
 
-
+    void playAgain(){
+        SceneManager.LoadScene("ChallengeMode");
+    }
 }
 
 
