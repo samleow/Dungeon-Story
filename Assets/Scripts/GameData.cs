@@ -92,8 +92,6 @@ public class GameData
 
     public QuestionSet currEditQues = new QuestionSet();
 
-    public List<QuestionSet> CMQuestionSet = new List<QuestionSet>();
-
     public int currQID = -1;
     public int currI = -1;
     public int currJ = -1;

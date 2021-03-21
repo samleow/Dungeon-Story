@@ -73,3 +73,4 @@ Packages/packages-lock.json
 ProjectSettings/ProjectVersion.txt
 Packages/packages-lock.json
 Packages/manifest.json
+.vscode/launch.json

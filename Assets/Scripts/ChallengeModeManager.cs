@@ -7,13 +7,7 @@ using UnityEngine.Networking;
 public class ChallengeModeManager : MonoBehaviour
 
 {
-    public QuestionSet questionSet = null;
-    public Text questionText = null;
-    public Text option1 = null;
-    public Text option2 = null;
-    public Text option3 = null;
-    //public Text option4 = null;
-   // public Text option4 = null;
+   public CMQuizController CMQuizController;
 
     public Canvas startCanvas = null;
     public Canvas gameplayCanvas = null;
@@ -32,7 +26,6 @@ public class ChallengeModeManager : MonoBehaviour
     void Start()
     {
 
-        
         startCanvas.enabled = true;
         gameplayCanvas.enabled = false;
         gameEndCanvas.enabled = false;
@@ -71,44 +64,11 @@ public class ChallengeModeManager : MonoBehaviour
     void gameplayCanvasEnable(){
         startCanvas.enabled = false;
         gameplayCanvas.enabled = true;
+        CMQuizController.generateQuestion();
 
-        if (questionSet==null){
-                Debug.Log("Quiz Controller does not have question set!");
-            }
-            else{
-                setquestions();
-            }   
-        
-        
     }
 
-    void setquestions(){
-        questionText.text = questionSet.question;
-        option1.text = questionSet.options[0];
-        option2.text = questionSet.options[1];
-        option3.text = questionSet.options[2];
-    }
 
-    public void SelectedOption(string option)
-    {
-        // TODO
-
-        // can do feedback/animation for pass/fail/no option etc. before closing
-
-        // if answer correctly before time ran out, send pass to combat controller
-        if (option == questionSet.answer)
-        {
-            // pass
-            Debug.Log("Pass!");
-            return;
-        }
-        else
-        {
-            // fail
-            Debug.Log("Fail!");
-            return;
-        }
-    }
 }
 
 
