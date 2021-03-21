@@ -12,10 +12,16 @@ public class editQuestions : MonoBehaviour
 {
     public Text textField;
     GameData _gameData = GameData.getInstance;
+    public GameObject msgBox,msgBox2,msgBox3;
     preloadQues script2;
     void Start()
     {
         script2 = GameObject.FindObjectOfType<preloadQues>();
+    }
+
+    public void confirmationBox()
+    {
+        msgBox2.SetActive(true);
     }
     public void addQuestions()
     {
@@ -111,6 +117,7 @@ public class editQuestions : MonoBehaviour
 
     public void deleteQuestions()
     {
+        msgBox2.SetActive(false);
         StartCoroutine(deleteQues(_gameData.currQID));
         _gameData.questions[_gameData.currI].RemoveAt(_gameData.currJ);
     }
@@ -140,6 +147,7 @@ public class editQuestions : MonoBehaviour
             UnityEngine.Debug.Log(error);
             UnityEngine.Debug.Log("Question Added!");
             script2.reloadQues();
+            msgBox.SetActive(true);
             //SceneManager.LoadScene("EditQuestionsPage");         
         }
     }
@@ -171,6 +179,7 @@ public class editQuestions : MonoBehaviour
             UnityEngine.Debug.Log("Question Updated!");
             script2.reloadQues();
             //SceneManager.LoadScene("EditQuestionsPage");
+            msgBox.SetActive(true);
         }
     }
 
@@ -195,6 +204,7 @@ public class editQuestions : MonoBehaviour
             UnityEngine.Debug.Log("Question Deleted!");
             script2.reloadQues();
             //SceneManager.LoadScene("EditQuestionsPage");
+            msgBox3.SetActive(true);
         }
     }
 

@@ -16,7 +16,7 @@ public class checkWorldLock : MonoBehaviour
     Button btn1, btn2,btn3,unlock1,unlock2;
     Color newColor = Color.gray;
     GameData _gameData = GameData.getInstance;
-   //public Button unlockBtn;
+    public GameObject msgBox;
     //public Button unlockBtn2;
 
 
@@ -237,6 +237,6 @@ public class checkWorldLock : MonoBehaviour
 
     void reloadScene()
     {
-        SceneManager.LoadScene("AdminPage");
+        msgBox.SetActive(true);
     }
 }

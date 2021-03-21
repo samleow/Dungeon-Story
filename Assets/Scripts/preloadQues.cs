@@ -20,7 +20,7 @@ public class preloadQues : MonoBehaviour
 
     public void reloadQues()
     {
-        StartCoroutine(reloadQuestions(1f,goToEditPage));
+        StartCoroutine(reloadQuestions());
     }
 
     void goToEditPage()
@@ -28,7 +28,7 @@ public class preloadQues : MonoBehaviour
         SceneManager.LoadScene("EditQuestionsPage");
     }
 
-    IEnumerator reloadQuestions(float time,Action doNext)
+    IEnumerator reloadQuestions()
     {
         int diff1, diff2, diff3;
         //_gameData.questions.Clear();
@@ -104,7 +104,6 @@ public class preloadQues : MonoBehaviour
                 _gameData.questions[2].Add(qs);
                 j++;
             }
-            doNext();
         }
 
     }
