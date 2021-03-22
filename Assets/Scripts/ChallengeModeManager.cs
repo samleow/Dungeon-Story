@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class ChallengeModeManager : MonoBehaviour
 
@@ -15,7 +16,11 @@ public class ChallengeModeManager : MonoBehaviour
     public Canvas gameEndCanvas = null;
     public Button startButton = null;
 
- //   public ToggleGroup difficulty = null;
+     public ToggleGroup difficultySetting;
+    // public Toggle difficulty1;
+    // public Toggle difficulty2;
+    // public Toggle difficulty3;
+    
 
     public Button playAgainButton = null;
 
@@ -44,10 +49,10 @@ public class ChallengeModeManager : MonoBehaviour
 
         //Timer Settings
         // for future difficulty settings
-        // currentTime = 0f; 
-        // startingTime = 30f; 
+        //this.currentTime = 0f; 
+        // startingTime = 30f;
         
-        currentTime = startingTime;
+        //currentTime = startingTime;
         timertext.color = Color.red;
 
         
@@ -57,6 +62,24 @@ public class ChallengeModeManager : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
+        if(startCanvas.enabled == true){
+            string difficulty = currentSelection.name;
+            Debug.Log(currentSelection.name);
+            switch(difficulty){
+                case "1":
+                    this.startingTime = 15f;
+                    break;
+                case "2":
+                    this.startingTime = 30f;
+                    break;
+                case "3":
+                    this.startingTime = 60f;
+                    break;
+            }
+            currentTime = startingTime;
+            Debug.Log(this.startingTime);
+        }
+
         if(gameplayCanvas.enabled == true){
             timer();
         }
@@ -96,6 +119,11 @@ public class ChallengeModeManager : MonoBehaviour
     void playAgain(){
         SceneManager.LoadScene("ChallengeMode");
     }
+
+    public Toggle currentSelection{
+        get {return difficultySetting.ActiveToggles().FirstOrDefault();}
+    }
+
 }
 
 

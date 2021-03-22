@@ -2066,6 +2066,7 @@ MonoBehaviour:
   gameplayCanvas: {fileID: 1655335858}
   gameEndCanvas: {fileID: 1523986753}
   startButton: {fileID: 1433860264}
+  difficultySetting: {fileID: 1116014031}
   playAgainButton: {fileID: 0}
   scoreText: {fileID: 16348849}
   timertext: {fileID: 1602755678}
@@ -2187,7 +2188,7 @@ GameObject:
   - component: {fileID: 1104952297}
   - component: {fileID: 1104952298}
   m_Layer: 5
-  m_Name: Difficulty2
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2256,11 +2257,22 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 563645824}
   toggleTransition: 1
   graphic: {fileID: 1190455430}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1116014031}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
-  m_IsOn: 1
+      m_Calls:
+      - m_Target: {fileID: 916482731}
+        m_MethodName: SelectToggle
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 0
 --- !u!1 &1116014029
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,12 +2284,12 @@ GameObject:
   - component: {fileID: 1116014030}
   - component: {fileID: 1116014031}
   m_Layer: 5
-  m_Name: Toggle Group
+  m_Name: DifficultySettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1116014030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2802,7 +2814,7 @@ GameObject:
   - component: {fileID: 1361403602}
   - component: {fileID: 1361403603}
   m_Layer: 5
-  m_Name: Difficulty1
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2871,10 +2883,21 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1277986031}
   toggleTransition: 1
   graphic: {fileID: 385955055}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1116014031}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 916482731}
+        m_MethodName: SelectToggle
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1433860262
 GameObject:
@@ -3025,7 +3048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1523986750
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3527,7 +3550,7 @@ GameObject:
   - component: {fileID: 1799640850}
   - component: {fileID: 1799640851}
   m_Layer: 5
-  m_Name: Difficulty3
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3596,11 +3619,22 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1905000554}
   toggleTransition: 1
   graphic: {fileID: 577353118}
-  m_Group: {fileID: 0}
+  m_Group: {fileID: 1116014031}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
-  m_IsOn: 1
+      m_Calls:
+      - m_Target: {fileID: 916482731}
+        m_MethodName: SelectToggle
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 0
 --- !u!1 &1853391901
 GameObject:
   m_ObjectHideFlags: 0
