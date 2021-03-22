@@ -50,6 +50,11 @@ public class makeLeaderboard : MonoBehaviour
         text.fontSize = 50;
         text.font = arial;
         text.alignment = TextAnchor.MiddleCenter;
+        // change text color and font (added code for ui)
+        Font font = Resources.Load("GUI/Font/Old Cave") as Font;
+        text.color = Color.black;
+        text.font = font;
+
 
         // Positioning and size of text        
         rectTransform = text.GetComponent<RectTransform>();
@@ -80,6 +85,8 @@ public class makeLeaderboard : MonoBehaviour
             y = y - 60; // move y position down
             rank++; //increase rank
             colour = Color.white;
+            //change font color from white to black (added code for ui)
+            colour = Color.black;
         }
         if (_gameData.rank > 5 && outputUser==false)
         {
