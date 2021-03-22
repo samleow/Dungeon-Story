@@ -68,7 +68,7 @@ public class QuizController : MonoBehaviour
         //option4.text = questionSet.options[3];
 
         if (combatController.isBoss)
-            timer_obj.SetActive(false);
+            timer_obj.SetActive(true);
         else
         {
             timer_obj.SetActive(false);
