@@ -37,9 +37,9 @@ IEnumerator loadQuestions()
             diff1 = int.Parse(questionBank[i]);
             diff2 = int.Parse(questionBank[++i]);
             diff3 = int.Parse(questionBank[++i]);
-            UnityEngine.Debug.Log(diff1);
-            UnityEngine.Debug.Log(diff2);
-            UnityEngine.Debug.Log(diff3);
+            //UnityEngine.Debug.Log(diff1);
+            //UnityEngine.Debug.Log(diff2);
+            //UnityEngine.Debug.Log(diff3);
             int j = 0;
             //_gameData.questions.Add(newSet);
             while (j < (diff1+diff2+diff3))

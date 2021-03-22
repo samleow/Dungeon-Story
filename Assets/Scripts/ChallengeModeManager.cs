@@ -64,7 +64,7 @@ public class ChallengeModeManager : MonoBehaviour
     {
         if(startCanvas.enabled == true){
             string difficulty = currentSelection.name;
-            Debug.Log(currentSelection.name);
+            //Debug.Log(currentSelection.name);
             switch(difficulty){
                 case "1":
                     this.startingTime = 15f;
@@ -77,7 +77,7 @@ public class ChallengeModeManager : MonoBehaviour
                     break;
             }
             currentTime = startingTime;
-            Debug.Log(this.startingTime);
+           // Debug.Log(this.startingTime);
         }
 
         if(gameplayCanvas.enabled == true){
@@ -108,7 +108,7 @@ public class ChallengeModeManager : MonoBehaviour
     }
 
     void gameEndCanvasEnable(){
-        Debug.Log(CMQuizController.getScore());
+        //Debug.Log(CMQuizController.getScore());
         this.score = CMQuizController.getScore();
         this.questionNum = CMQuizController.getQuestionNum();
         scoreText.text = string.Format("Score: {0}/{1}", this.score, this.questionNum);
