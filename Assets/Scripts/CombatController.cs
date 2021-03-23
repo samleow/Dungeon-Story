@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using System.Net;
 
+
 public class CombatController : MonoBehaviour
 {
     // List of questions and answer options
@@ -181,6 +182,7 @@ public class CombatController : MonoBehaviour
                 // TODO Scoring
                 //_gameData.score_current += _gameData.difficulty*_gameData.streak;
                 _gameData.score_current += _gameData.difficulty * 10;
+                _gameData.questions_correct++;
                 _gameData.total_questions++;
 
                 // animate pass
@@ -194,6 +196,7 @@ public class CombatController : MonoBehaviour
                 // if enemy dies, battle over
                 if (_gameData.enemy_health_current <= 0)
                 {
+                    quiz_status = -1;
                     _gameData.enemy_health_current = 0;
                     Debug.Log("Battle Over! You win!");
 
@@ -201,6 +204,7 @@ public class CombatController : MonoBehaviour
                     // transition to player gameplay stats screen and upload highscore etc
                     if (_gameData.floor_current >= _gameData.boss_floor)
                     {
+                        quiz_status = -1;
                         Debug.Log("Game Over! Victory!");
                         PlayerPrefs.SetString("Score", _gameData.score_current.ToString());
                         StartCoroutine(UpdateLeaderboard());
@@ -271,17 +275,24 @@ public class CombatController : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("username", username);
         form.AddField("score", score);
-        UnityWebRequest www = UnityWebRequest.Post("http://valerianlow123.000webhostapp.com/updateScore.php", form);
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError || www.isHttpError)
+        if (String.IsNullOrEmpty(username))
         {
-            Debug.Log(www.error);
+            UnityWebRequest www = UnityWebRequest.Post("http://valerianlow123.000webhostapp.com/updateScore.php", form);
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+                string error = www.downloadHandler.text;
+            }
         }
         else
         {
-            Debug.Log(www.downloadHandler.text);
-            string error = www.downloadHandler.text;
+            UnityEngine.Debug.Log("Some error occured!");
         }
     }
 

@@ -79,7 +79,15 @@ public class makeLeaderboard : MonoBehaviour
             {
                 tempScore2 = -1;
             }
+            if (tempUser.Equals(_gameData.user) && outputUser == true)
+            {
+                i = i + 2;
+                tempUser = _gameData.score[i];
+                tempScore = int.Parse(_gameData.score[i + 1]);
+            }
+            
             outputDetails(x, y, tempUser, tempScore, tempScore2, rank, colour);
+            
            
 
             y = y - 60; // move y position down

@@ -23,6 +23,10 @@ public class checkWorldLock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _gameData.questions_correct = 0;
+        _gameData.questions_wrong = 0;
+        _gameData.total_questions = 0;
+
         if (SceneManager.GetActiveScene().name.Equals("TitlePage") || SceneManager.GetActiveScene().name.Equals("AdminPage"))
         {
             StartCoroutine(checkWorldLocked());
