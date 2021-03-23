@@ -50,7 +50,7 @@ public class showQuestions : MonoBehaviour
                 text.fontSize = 30;
                 text.font = arial;
                 text.alignment = TextAnchor.MiddleLeft;
-                text.color = Color.black;
+                text.color = Color.white;
 
                 // Positioning and size of text
                 RectTransform rectTransform;

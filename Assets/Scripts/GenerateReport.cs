@@ -16,6 +16,7 @@ public class GenerateReport : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int totalAnswered, totalCorrect,percent;
         int x = 0;   //position for text label
         int y = 0;    //position for text label
         string result = "";
@@ -23,11 +24,29 @@ public class GenerateReport : MonoBehaviour
         arial = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
 
 
-        for (int i = 0; i < _gameData.report.Count; i=i+4)
-        {           
-            result = "Question: " + _gameData.report[i + 1] + "\n[Difficulty: " + _gameData.report[i] + "]\nTotal Correct Attempts: " + _gameData.report[i + 2] + 
-                    "\nTotal Wrong Attempts: " + _gameData.report[i + 3] + "\nTotal Attempts:" + (int.Parse(_gameData.report[i + 2]) + int.Parse(_gameData.report[i + 3])).ToString();
-
+        for (int i = 0; i < _gameData.report.Count; i = i + 4)
+        {
+            totalCorrect = int.Parse(_gameData.report[i + 2]);
+            totalAnswered = int.Parse(_gameData.report[i + 2]) + int.Parse(_gameData.report[i + 3]);
+            percent = totalCorrect * 100 / totalAnswered;
+            if (percent >= 80)
+            {
+                result = "Question: " + _gameData.report[i + 1] + "\n[Difficulty: " + _gameData.report[i] + "]\nTotal Correct Attempts: " + _gameData.report[i + 2] +
+                    "           Percentage correct: <color=green>" + percent.ToString() +
+                    "%</color>\nTotal Wrong Attempts: " + _gameData.report[i + 3] + "\nTotal Attempts:" + totalAnswered.ToString();
+            }
+            else if (percent >= 50)
+            {
+                result = "Question: " + _gameData.report[i + 1] + "\n[Difficulty: " + _gameData.report[i] + "]\nTotal Correct Attempts: " + _gameData.report[i + 2] +
+                    "           Percentage correct: <color=orange>" + percent.ToString() +
+                    "%</color>\nTotal Wrong Attempts: " + _gameData.report[i + 3] + "\nTotal Attempts:" + totalAnswered.ToString();
+            }
+            else
+            {
+                result = "Question: " + _gameData.report[i + 1] + "\n[Difficulty: " + _gameData.report[i] + "]\nTotal Correct Attempts: " + _gameData.report[i + 2] +
+                    "           Percentage correct: <color=red>" + percent.ToString() +
+                    "%</color>\nTotal Wrong Attempts: " + _gameData.report[i + 3] + "\nTotal Attempts:" + totalAnswered.ToString();
+            }
             VerticalLayoutGroup canvasGO = GameObject.Find("Content").GetComponent<VerticalLayoutGroup>();
             GameObject textGO = new GameObject();
             textGO.transform.parent = canvasGO.transform;
@@ -39,7 +58,7 @@ public class GenerateReport : MonoBehaviour
             text.fontSize = 30;
             text.font = arial;
             text.alignment = TextAnchor.MiddleLeft;
-            text.color = Color.black;
+            text.color = Color.white;
 
             // Positioning and size of text
             RectTransform rectTransform;
