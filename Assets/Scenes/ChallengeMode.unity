@@ -2067,6 +2067,9 @@ MonoBehaviour:
   gameEndCanvas: {fileID: 1523986753}
   startButton: {fileID: 1433860264}
   difficultySetting: {fileID: 1116014031}
+  difficulty1: {fileID: 1361403603}
+  difficulty2: {fileID: 1104952298}
+  difficulty3: {fileID: 1799640851}
   playAgainButton: {fileID: 0}
   scoreText: {fileID: 16348849}
   timertext: {fileID: 1602755678}
@@ -2262,12 +2265,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 916482731}
-        m_MethodName: SelectToggle
-        m_Mode: 3
+        m_MethodName: timeDifficulty
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2888,8 +2891,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 916482731}
-        m_MethodName: SelectToggle
-        m_Mode: 3
+        m_MethodName: timeDifficulty
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3624,12 +3627,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 916482731}
-        m_MethodName: SelectToggle
-        m_Mode: 3
+        m_MethodName: timeDifficulty
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

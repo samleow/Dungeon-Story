@@ -17,9 +17,9 @@ public class ChallengeModeManager : MonoBehaviour
     public Button startButton = null;
 
      public ToggleGroup difficultySetting;
-    // public Toggle difficulty1;
-    // public Toggle difficulty2;
-    // public Toggle difficulty3;
+     public Toggle difficulty1;
+     public Toggle difficulty2;
+     public Toggle difficulty3;
     
 
     public Button playAgainButton = null;
@@ -28,7 +28,7 @@ public class ChallengeModeManager : MonoBehaviour
 
     public Text timertext = null;
     float currentTime = 0f;
-    float startingTime = 30f;
+    float startingTime = 15f;
 
     public int score = 0;
     public int questionNum = 0;
@@ -52,7 +52,7 @@ public class ChallengeModeManager : MonoBehaviour
         //this.currentTime = 0f; 
         // startingTime = 30f;
         
-        //currentTime = startingTime;
+        currentTime = startingTime;
         timertext.color = Color.red;
 
         
@@ -62,23 +62,6 @@ public class ChallengeModeManager : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-        if(startCanvas.enabled == true){
-            string difficulty = currentSelection.name;
-            //Debug.Log(currentSelection.name);
-            switch(difficulty){
-                case "1":
-                    this.startingTime = 15f;
-                    break;
-                case "2":
-                    this.startingTime = 30f;
-                    break;
-                case "3":
-                    this.startingTime = 60f;
-                    break;
-            }
-            currentTime = startingTime;
-           // Debug.Log(this.startingTime);
-        }
 
         if(gameplayCanvas.enabled == true){
             timer();
@@ -120,9 +103,19 @@ public class ChallengeModeManager : MonoBehaviour
         SceneManager.LoadScene("ChallengeMode");
     }
 
-    public Toggle currentSelection{
-        get {return difficultySetting.ActiveToggles().FirstOrDefault();}
+    public void timeDifficulty(){
+    if(difficulty1.isOn == true){
+        this.startingTime = 15f;
     }
+    else if(difficulty2.isOn == true){
+        this.startingTime = 30f;
+    }
+    else if(difficulty3.isOn == true){
+        this.startingTime = 60f;
+    }
+    currentTime = startingTime;
+    Debug.Log(startingTime);
+}
 
 }
 
