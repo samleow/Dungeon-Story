@@ -33,6 +33,10 @@ public class ChallengeModeManager : MonoBehaviour
     public int score = 0;
     public int questionNum = 0;
 
+    public int player2score = 0;
+    public int player2questionNum = 0;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -116,6 +120,10 @@ public class ChallengeModeManager : MonoBehaviour
     currentTime = startingTime;
     Debug.Log(startingTime);
 }
+
+    void playertwoEnable(){
+
+    }
 
 }
 

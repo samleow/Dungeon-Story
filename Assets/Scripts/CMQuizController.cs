@@ -43,7 +43,7 @@ public class CMQuizController : MonoBehaviour
         option3.text = currentQuestion.options[2];
        // Debug.Log(currentQuestion.options[2]);
 
-        CMQuestionSet.RemoveAt(currentQuestionIndex);
+        //CMQuestionSet.RemoveAt(currentQuestionIndex);
         
     }
 
