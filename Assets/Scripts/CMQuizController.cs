@@ -60,8 +60,16 @@ public class CMQuizController : MonoBehaviour
         return this.score;
     }
 
+    public void setScore(int num){
+        this.score = num;
+    }
+
     public int getQuestionNum(){
         return this.questionnumber;
+    }
+
+    public void setQuestionNum(int num){
+        this.questionnumber = num;
     }
     
 }
