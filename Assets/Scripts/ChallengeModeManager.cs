@@ -149,8 +149,8 @@ public class ChallengeModeManager : MonoBehaviour
             winnerName.text = "Player 1 Wins!";
         }
 
-        Debug.Log(string.Format("PlayerOneScore: {0}/{1}", this.player1score, this.player1questionNum));
-        Debug.Log(string.Format("PlayerTwoScore: {0}/{1}", this.player2score, this.player2questionNum));
+       // Debug.Log(string.Format("PlayerOneScore: {0}/{1}", this.player1score, this.player1questionNum));
+       // Debug.Log(string.Format("PlayerTwoScore: {0}/{1}", this.player2score, this.player2questionNum));
 
 
 
@@ -158,17 +158,9 @@ public class ChallengeModeManager : MonoBehaviour
     }
 
     void playAgain(){
-        // turn = 1;
-        // player1questionNum = 0;
-        // player1score = 0;
-        // player2questionNum = 0;
-        // player2score = 0;
+
         SceneManager.LoadScene("ChallengeMode");
-        // Debug.Log(turn);
-        // Debug.Log(player1questionNum);
-        // Debug.Log(player1score);
-        // Debug.Log(player2questionNum);
-        // Debug.Log(player2score);
+
     }
 
     public void timeDifficulty(){
@@ -200,12 +192,12 @@ public class ChallengeModeManager : MonoBehaviour
         float fscore = (float)score;
         float fquestionnum = (float)questionnum;
 
-        Debug.Log("accuracy calcuator score: " + fscore);
-        Debug.Log("accuracy calcuator questinonum: " + fquestionnum);
+      //  Debug.Log("accuracy calcuator score: " + fscore);
+      //  Debug.Log("accuracy calcuator questinonum: " + fquestionnum);
         
         int accuracy = (int)Math.Round((double)(100 * fscore) / fquestionnum);
 
-        Debug.Log("Accuracy of: " + accuracy);
+      //  Debug.Log("Accuracy of: " + accuracy);
         return accuracy;
     }
 }
