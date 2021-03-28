@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 //using Facebook.Unity; //for Facebook SDK
 
 public class SocialMedia : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // public Text shareUnlockWorld = null;
+
+    // public Text shareUnlockSection2 = null;
+    // public Text shareUnlockSection3 = null;
 
     // For Twitter
 
@@ -28,7 +25,7 @@ public class SocialMedia : MonoBehaviour
     string twitter_lang = "en";
 
 	//This is the text which you want to show
-	string textToDisplay="Announcements Level Unlock!";
+	string textToDisplay=" is unlock. Please access Dungeon Story to complete your gameplay.";
 
     // For Facebook
 
@@ -47,21 +44,45 @@ public class SocialMedia : MonoBehaviour
 	//The Description of the link
 	string description = "";
 
+    string pageName ="";
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        if (SceneManager.GetActiveScene().name.Equals("WorldPage"))
+        {
+            pageName = "New World";
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("SectionPage"))
+        {
+            pageName = "New Section";
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 
     // Twitter Share Button	
 	public void shareOnTwitter () 
 	{
 		//Application.OpenURL (TWITTER_ADDRESS + "?text=" + WWW.EscapeURL(textToDisplay) + score.points + "&amp;lang=" + WWW.EscapeURL(TWEET_LANGUAGE));
 
-		Application.OpenURL (twitter_add + "?text=" + UnityWebRequest.EscapeURL(textToDisplay) + "100" + "&amp;lang=" + UnityWebRequest.EscapeURL(twitter_lang));
+		//Application.OpenURL (twitter_add + "?text=" + UnityWebRequest.EscapeURL(textToDisplay) + "100" + "&amp;lang=" + UnityWebRequest.EscapeURL(twitter_lang));
+        string display = pageName + textToDisplay;
+        Application.OpenURL (twitter_add + "?text=" + UnityWebRequest.EscapeURL(display) + "&amp;lang=" + UnityWebRequest.EscapeURL(twitter_lang));
+
 	}
 
     // Facebook Share Button
 	public void shareOnFacebook ()
 	{
+        string display = pageName + textToDisplay;
 		Application.OpenURL ("https://www.facebook.com/dialog/feed?" + "app_id=" + appID + "&link=" + link + "&picture=" + picture
-		                     + "&caption=" + caption + "&description=" + description);
+		                     + "&caption=" + display + "&description=" + display);
 
         // this code below is for Facebook SDK and only export to WEBGL work
 		//FB.ShareLink(new Uri("https://www.ntu.edu.sg"),"Title","Score 100",null,ShareCallback);
