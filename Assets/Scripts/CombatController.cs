@@ -30,6 +30,10 @@ public class CombatController : MonoBehaviour
     public Sprite mageImg = null;
     public Sprite rangerImg = null;
 
+    public AudioSource[] sounds;
+    public AudioSource noise1;
+    public AudioSource noise2;
+
     public preloadLeaderboard test;
 
     GameData _gameData = null;
@@ -41,9 +45,12 @@ public class CombatController : MonoBehaviour
     {
         _gameData = GameData.getInstance;
         test = GameObject.Find("script").GetComponent<preloadLeaderboard>();
-        
 
-        if(QuestionMenu.activeSelf)
+        sounds = GetComponents<AudioSource>();
+        noise1 = sounds[0];
+        noise2 = sounds[1];
+
+        if (QuestionMenu.activeSelf)
             QuestionMenu.SetActive(false);
 
         if (_gameData.difficulty == -1)
@@ -65,6 +72,7 @@ public class CombatController : MonoBehaviour
             _gameData.enemy_attack = 1;
             enemy_HealthBar.SetMaxHealth(_gameData.minion_health_max);
             enemyImg.sprite = enemyMiniBossImg;
+            noise1.Play();
         }
         // if boss
         else
@@ -76,6 +84,7 @@ public class CombatController : MonoBehaviour
             enemyImg.sprite = enemyBossImg;
             enemyImg.rectTransform.sizeDelta = new Vector2(700, 700);
             enemyImg.rectTransform.anchoredPosition = new Vector2(-350, 0);
+            noise2.Play();
         }
         
         if(_gameData.player_class_name == "Warrior")
