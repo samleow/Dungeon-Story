@@ -35,6 +35,7 @@ public class CombatController : MonoBehaviour
     public AudioSource dragonRoar;
     public AudioSource charAttack;
     public AudioSource enemyPain;
+    public AudioSource charPain;
 
     public preloadLeaderboard test;
 
@@ -53,6 +54,7 @@ public class CombatController : MonoBehaviour
         dragonRoar = sounds[1];
         charAttack = sounds[2];
         enemyPain = sounds[3];
+        charPain = sounds[4];
 
         if (QuestionMenu.activeSelf)
             QuestionMenu.SetActive(false);
@@ -138,7 +140,9 @@ public class CombatController : MonoBehaviour
 
                 // animate fail
                 // take damage
-           
+                charAttack.Play();
+                charPain.PlayDelayed(0.5f);
+
                 _gameData.questions_wrong++;
                 _gameData.total_questions++;
                 //_gameData.player_health_current -= 1;
