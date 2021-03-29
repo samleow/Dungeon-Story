@@ -11,7 +11,9 @@ public class ChallengeModeManager : MonoBehaviour
 
 {
    public CMQuizController CMQuizController;
+   public LoadCMQuestions LoadCMQuestions;
 
+    public List<QuestionSet> CMQuestionSet = new List<QuestionSet>();
     public Canvas startCanvas = null;
     public Canvas gameplayCanvas = null;
     
@@ -63,6 +65,7 @@ public class ChallengeModeManager : MonoBehaviour
         gameEndCanvas.enabled = false;
         startButton.onClick.AddListener(gameplayCanvasEnable);
         startButtonP2.onClick.AddListener(gameplayCanvasEnable);
+        CMQuestionSet = LoadCMQuestions.GetQuestionBank();
         // Option1Button.onClick.AddListener(delegate{CMQuizController.CheckAnswer("a");});
         // Option2Button.onClick.AddListener(delegate{CMQuizController.CheckAnswer("b");});
         // Option3Button.onClick.AddListener(delegate{CMQuizController.CheckAnswer("c");});
@@ -83,7 +86,7 @@ public class ChallengeModeManager : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-
+        
         if(gameplayCanvas.enabled == true){
             timer();
         }
