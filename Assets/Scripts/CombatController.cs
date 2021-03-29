@@ -31,8 +31,10 @@ public class CombatController : MonoBehaviour
     public Sprite rangerImg = null;
 
     public AudioSource[] sounds;
-    public AudioSource noise1;
-    public AudioSource noise2;
+    public AudioSource goblinRoar;
+    public AudioSource dragonRoar;
+    public AudioSource charAttack;
+    public AudioSource enemyPain;
 
     public preloadLeaderboard test;
 
@@ -47,8 +49,10 @@ public class CombatController : MonoBehaviour
         test = GameObject.Find("script").GetComponent<preloadLeaderboard>();
 
         sounds = GetComponents<AudioSource>();
-        noise1 = sounds[0];
-        noise2 = sounds[1];
+        goblinRoar = sounds[0];
+        dragonRoar = sounds[1];
+        charAttack = sounds[2];
+        enemyPain = sounds[3];
 
         if (QuestionMenu.activeSelf)
             QuestionMenu.SetActive(false);
@@ -72,7 +76,7 @@ public class CombatController : MonoBehaviour
             _gameData.enemy_attack = 1;
             enemy_HealthBar.SetMaxHealth(_gameData.minion_health_max);
             enemyImg.sprite = enemyMiniBossImg;
-            noise1.Play();
+            goblinRoar.Play();
         }
         // if boss
         else
@@ -84,7 +88,7 @@ public class CombatController : MonoBehaviour
             enemyImg.sprite = enemyBossImg;
             enemyImg.rectTransform.sizeDelta = new Vector2(700, 700);
             enemyImg.rectTransform.anchoredPosition = new Vector2(-350, 0);
-            noise2.Play();
+            dragonRoar.Play();
         }
         
         if(_gameData.player_class_name == "Warrior")
@@ -115,7 +119,7 @@ public class CombatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+    
         switch (quiz_status)
         {
             // fail
@@ -134,6 +138,7 @@ public class CombatController : MonoBehaviour
 
                 // animate fail
                 // take damage
+           
                 _gameData.questions_wrong++;
                 _gameData.total_questions++;
                 //_gameData.player_health_current -= 1;
@@ -196,6 +201,9 @@ public class CombatController : MonoBehaviour
 
                 // animate pass
                 // deal damage
+                charAttack.Play();
+                enemyPain.PlayDelayed(0.5f);
+
                 _gameData.enemy_health_current -= _gameData.player_attack;
                 if(_gameData.enemy_health_current < 0)// to prevent negative health
                 {
