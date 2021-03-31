@@ -78,7 +78,8 @@ public class checkWorldLock : MonoBehaviour
         
     }
 
-    IEnumerator checkWorldLocked()
+    
+    public IEnumerator checkWorldLocked()
     {
         UnityWebRequest www = UnityWebRequest.Get("http://valerianlow123.000webhostapp.com/lockWorld.php");
         yield return www.SendWebRequest();

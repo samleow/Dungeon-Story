@@ -11,6 +11,7 @@ public class Validate_Login : MonoBehaviour
     // Start is called before the first frame update
     public Text textField;
     GameData _gameData = GameData.getInstance;
+    public checkWorldLock checkWorldLock;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class Validate_Login : MonoBehaviour
 
         if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
         {
+            StartCoroutine(checkWorldLock.checkWorldLocked());
             StartCoroutine(Upload(username, password));
         }
         else
