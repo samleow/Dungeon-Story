@@ -137,15 +137,36 @@ public class ChallengeModeManager : MonoBehaviour
         this.player2score = CMQuizController.getScore();
         this.player2questionNum = CMQuizController.getQuestionNum();
 
-        int player1accuracy = accuracyCalculator(player1score,player1questionNum);
-        int player2accuracy = accuracyCalculator(player2score,player2questionNum);
+        int baseTotalQuestion;
+
+        if(player1questionNum>=player2questionNum){
+            baseTotalQuestion = player1questionNum;
+        }
+        else{
+            baseTotalQuestion = player2questionNum;
+        }
+
+        int player1accuracy = accuracyCalculator(player1score,baseTotalQuestion);
+        int player2accuracy = accuracyCalculator(player2score,baseTotalQuestion);
        // Debug.Log("P1 accuracy: " + player1accuracy);
        // Debug.Log("p2 accuracy: "+ player2accuracy);
 
-        scoreText.text = string.Format("P1 Accuracy: " + player1accuracy + "%");
-        scoreTextPlayer2.text = string.Format("P2 Accuracy: " + player2accuracy + "%");
+        if(player1accuracy<0){
+           scoreText.text = string.Format("P1 Accuracy: 0%"); 
+        }
+        if(player2accuracy<0){
+            scoreTextPlayer2.text = string.Format("P2 Accuracy: 0%");
+        }
+        else{
+            scoreText.text = string.Format("P1 Accuracy: " + player1accuracy + "%");
+            scoreTextPlayer2.text = string.Format("P2 Accuracy: " + player2accuracy + "%");
+        }
 
-        if(player1accuracy < player2accuracy){
+
+        if(player1accuracy == player2accuracy){
+            winnerName.text = "GAME DRAW!";
+        }
+        else if(player1accuracy < player2accuracy){
             winnerName.text = "Player 2 WINS!";
         }
         else {
@@ -199,6 +220,7 @@ public class ChallengeModeManager : MonoBehaviour
       //  Debug.Log("accuracy calcuator questinonum: " + fquestionnum);
         
         int accuracy = (int)Math.Round((double)(100 * fscore) / fquestionnum);
+    // Debug.Log("Accuracy is: " + accuracy);
 
       //  Debug.Log("Accuracy of: " + accuracy);
         return accuracy;
