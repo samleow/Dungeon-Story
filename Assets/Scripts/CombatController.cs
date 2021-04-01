@@ -292,11 +292,10 @@ public class CombatController : MonoBehaviour
         GameData _gameData = GameData.getInstance;
         string username = _gameData.user;
         int score = _gameData.score_current;
-
         WWWForm form = new WWWForm();
         form.AddField("username", username);
         form.AddField("score", score);
-        if (String.IsNullOrEmpty(username))
+        if (!String.IsNullOrEmpty(username))
         {
             UnityWebRequest www = UnityWebRequest.Post("http://valerianlow123.000webhostapp.com/updateScore.php", form);
             yield return www.SendWebRequest();
