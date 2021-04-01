@@ -68,4 +68,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/editQuesPage.unity
     guid: 76cb24809e1d04f44bd285ea4393751d
+  - enabled: 1
+    path: Assets/Scenes/GraphPage.unity
+    guid: 754061d25486e324fbf7c76c6dbe56d1
   m_configObjects: {}
