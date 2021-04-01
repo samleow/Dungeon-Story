@@ -2,32 +2,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIEventsController : MonoBehaviour
 {
     public GameObject warriorPartical = null;
     public GameObject magePartical = null;
-    public GameObject rangerPartical = null;
+    public GameObject barbarianPartical = null;
 
-    public void activateWarrior()
+    public GameObject descriptionCanvas = null;
+    public Text characterName = null;
+    public Text attack = null;
+    public Text health = null;
+
+    /*public void activateWarrior()
     {
         warriorPartical.SetActive(true);
         magePartical.SetActive(false);
-        rangerPartical.SetActive(false);
+        barbarianPartical.SetActive(false);
     }
 
     public void activateMage()
     {
         warriorPartical.SetActive(false);
         magePartical.SetActive(true);
-        rangerPartical.SetActive(false);
+        barbarianPartical.SetActive(false);
     }
 
     public void activateRanger()
     {
         warriorPartical.SetActive(false);
         magePartical.SetActive(false);
-        rangerPartical.SetActive(true);
+        barbarianPartical.SetActive(true);
+    }*/
+
+    public void activateCharacter(Character character)
+    {
+        characterName.text = character.class_name;
+        attack.text = character.attack.ToString();
+        health.text = character.health_max.ToString();
+        descriptionCanvas.SetActive(true);
+
+        if (character.class_name.Equals("Warrior"))
+        {
+            warriorPartical.SetActive(true);
+            magePartical.SetActive(false);
+            barbarianPartical.SetActive(false);
+        }
+        else if (character.class_name.Equals("Mage"))
+        {
+            warriorPartical.SetActive(false);
+            magePartical.SetActive(true);
+            barbarianPartical.SetActive(false);
+        }
+        else if (character.class_name.Equals("Barbarian"))
+        {
+            warriorPartical.SetActive(false);
+            magePartical.SetActive(false);
+            barbarianPartical.SetActive(true);
+        }
     }
 
     // Load Scene
@@ -66,6 +99,8 @@ public class UIEventsController : MonoBehaviour
 
         gd.floor_current = 1;
         gd.score_current = 0;
+
+        descriptionCanvas.SetActive(false);
     }
 
     // Select door
