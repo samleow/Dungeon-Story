@@ -148,6 +148,8 @@ public class ChallengeModeManager : MonoBehaviour
 
         int player1accuracy = accuracyCalculator(player1score,baseTotalQuestion);
         int player2accuracy = accuracyCalculator(player2score,baseTotalQuestion);
+       // Debug.Log("P1 accuracy: " + player1accuracy);
+       // Debug.Log("p2 accuracy: "+ player2accuracy);
 
         if(player1accuracy<0){
            scoreText.text = string.Format("P1 Accuracy: 0%"); 
@@ -171,11 +173,6 @@ public class ChallengeModeManager : MonoBehaviour
             winnerName.text = "Player 1 Wins!";
         }
 
-        // Debug.Log("P1 total question: " + player1questionNum);
-        // Debug.Log("P2 total question: " + player2questionNum);
-        // Debug.Log("basetotalQuestion: " + baseTotalQuestion);
-        // Debug.Log("P1 accuracy: " + player1accuracy);
-        // Debug.Log("p2 accuracy: "+ player2accuracy);
        // Debug.Log(string.Format("PlayerOneScore: {0}/{1}", this.player1score, this.player1questionNum));
        // Debug.Log(string.Format("PlayerTwoScore: {0}/{1}", this.player2score, this.player2questionNum));
 
