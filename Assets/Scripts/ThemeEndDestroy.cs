@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ThemeEndDestroy : MonoBehaviour
 {
-    void Awake()
-    {
-        GameObject A = GameObject.FindGameObjectWithTag("endtheme");
-        Destroy(A);
-    }
+    // void Awake()
+    // {
+    //     GameObject A = GameObject.FindGameObjectWithTag("endtheme");
+    //     Destroy(A);
+    // }
 }

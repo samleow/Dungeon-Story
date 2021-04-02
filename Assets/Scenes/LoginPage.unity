@@ -688,7 +688,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warriorPartical: {fileID: 0}
   magePartical: {fileID: 0}
-  rangerPartical: {fileID: 0}
+  barbarianPartical: {fileID: 0}
+  descriptionCanvas: {fileID: 0}
+  characterName: {fileID: 0}
+  attack: {fileID: 0}
+  health: {fileID: 0}
 --- !u!114 &1297055005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,6 +1558,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1297055003}
     m_Modifications:
+    - target: {fileID: 728172670737597032, guid: 0dfcd41ba7cfb2a4d8fd0e0e92871e14,
+        type: 3}
+      propertyPath: m_Name
+      value: PasswordText
+      objectReference: {fileID: 0}
     - target: {fileID: 728172670737597034, guid: 0dfcd41ba7cfb2a4d8fd0e0e92871e14,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -1718,6 +1727,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: dab90a45cedf47b4291bd9816c597551,
         type: 3}
+    - target: {fileID: 6971451009804128830, guid: 2060068a96d52414181e67a0da8f804d,
+        type: 3}
+      propertyPath: m_Name
+      value: UserNameText
+      objectReference: {fileID: 0}
     - target: {fileID: 6971451010014994118, guid: 2060068a96d52414181e67a0da8f804d,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
