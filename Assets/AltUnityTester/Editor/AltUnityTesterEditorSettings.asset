@@ -22,21 +22,43 @@ MonoBehaviour:
   BuildNumber: 0
   MyTests:
   - _selected: 0
-    _testName: C:/Users/Chan Zhao Hui/Documents/GitHub/CZ3003/Dungeon-Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _testName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _status: 0
     _isSuite: 1
     _parentName: 
-    _testCaseCount: 155
+    _testCaseCount: 156
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
     _testDuration: 0
     path: 
+  - _selected: 1
+    _testName: Test_DungeonMode
+    _status: 1
+    _isSuite: 1
+    _parentName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _testCaseCount: 1
+    _foldOut: 1
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 0
+    path: 
+  - _selected: 1
+    _testName: Test_DungeonMode.TestLoadGame
+    _status: 1
+    _isSuite: 0
+    _parentName: Test_DungeonMode
+    _testCaseCount: 1
+    _foldOut: 1
+    _testResultMessage: 
+    _testStackTrace: 
+    _testDuration: 1.49647
+    path: Assets/Test/Editor/Test_DungeonMode.cs
   - _selected: 0
     _testName: TestForScene1TestSample
     _status: 0
     _isSuite: 1
-    _parentName: C:/Users/Chan Zhao Hui/Documents/GitHub/CZ3003/Dungeon-Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _parentName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _testCaseCount: 127
     _foldOut: 0
     _testResultMessage: 
@@ -1450,7 +1472,7 @@ MonoBehaviour:
     _testName: TestForScene2DraggablePanel
     _status: 0
     _isSuite: 1
-    _parentName: C:/Users/Chan Zhao Hui/Documents/GitHub/CZ3003/Dungeon-Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _parentName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _testCaseCount: 9
     _foldOut: 0
     _testResultMessage: 
@@ -1560,7 +1582,7 @@ MonoBehaviour:
     _testName: TestForScene3DragAndDrop
     _status: 0
     _isSuite: 1
-    _parentName: C:/Users/Chan Zhao Hui/Documents/GitHub/CZ3003/Dungeon-Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _parentName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _testCaseCount: 4
     _foldOut: 0
     _testResultMessage: 
@@ -1615,7 +1637,7 @@ MonoBehaviour:
     _testName: TestForScene4NoCameras
     _status: 0
     _isSuite: 1
-    _parentName: C:/Users/Chan Zhao Hui/Documents/GitHub/CZ3003/Dungeon-Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _parentName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _testCaseCount: 2
     _foldOut: 0
     _testResultMessage: 
@@ -1648,7 +1670,7 @@ MonoBehaviour:
     _testName: TestForScene5KeyboardAndMouseInput
     _status: 0
     _isSuite: 1
-    _parentName: C:/Users/Chan Zhao Hui/Documents/GitHub/CZ3003/Dungeon-Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _parentName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _testCaseCount: 9
     _foldOut: 0
     _testResultMessage: 
@@ -1754,18 +1776,18 @@ MonoBehaviour:
     _testStackTrace: 
     _testDuration: 2.1324525
     path: Assets/AltUnityTester/Examples/Test/Editor/TestForScene5KeyboardAndMouseInput.cs
-  - _selected: 1
+  - _selected: 0
     _testName: Testing
-    _status: 1
+    _status: 0
     _isSuite: 1
-    _parentName: C:/Users/Chan Zhao Hui/Documents/GitHub/CZ3003/Dungeon-Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _parentName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _testCaseCount: 1
     _foldOut: 1
     _testResultMessage: 
     _testStackTrace: 
     _testDuration: 0
     path: 
-  - _selected: 1
+  - _selected: 0
     _testName: Testing.TestLoginButton
     _status: 1
     _isSuite: 0
@@ -1780,7 +1802,7 @@ MonoBehaviour:
     _testName: unit
     _status: 0
     _isSuite: 1
-    _parentName: C:/Users/Chan Zhao Hui/Documents/GitHub/CZ3003/Dungeon-Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+    _parentName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _testCaseCount: 3
     _foldOut: 0
     _testResultMessage: 
@@ -1843,7 +1865,7 @@ MonoBehaviour:
     _testDuration: 0.0002817
     path: Assets/AltUnityTester
   - _selected: 1
-    _testName: C:/Users/Chan Zhao Hui/Documents/GitHub/CZ3003/Dungeon-Story/Library/ScriptAssemblies/Unity.Rider.Editor.dll
+    _testName: D:/Documents/NTU/Studies/Y2S2/CZ3003 SSAD/Lab/Dungeon Story/Library/ScriptAssemblies/Unity.Rider.Editor.dll
     _status: 0
     _isSuite: 1
     _parentName: 
