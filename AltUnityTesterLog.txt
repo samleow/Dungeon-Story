@@ -1,0 +1,28 @@
+4/2/2021 9:42:02 PM: response received: 1.6.2
+
+4/2/2021 9:42:02 PM: response received: Ok
+4/2/2021 9:42:02 PM:Logging is set to True
+4/2/2021 9:42:02 PM: response received: error:nullReferenceException
+4/2/2021 9:42:02 PM:LoadScene Scene 2 Draggable Panel
+4/2/2021 9:42:02 PM: response received: error:nullReferenceException
+4/2/2021 9:42:02 PM:LoadScene Scene 2 Draggable Panel
+4/2/2021 9:42:02 PM: response received: error:nullReferenceException
+4/2/2021 9:42:02 PM:LoadScene Scene 2 Draggable Panel
+4/2/2021 9:42:02 PM: response received: error:nullReferenceException
+4/2/2021 9:42:02 PM:LoadScene Scene 2 Draggable Panel
+4/2/2021 9:42:02 PM: response received: error:nullReferenceException
+4/2/2021 9:42:02 PM:LoadScene Scene 2 Draggable Panel
+4/2/2021 9:42:02 PM: response received: error:nullReferenceException
+4/2/2021 9:42:02 PM:LoadScene Scene 2 Draggable Panel
+4/2/2021 9:42:02 PM: response received: error:nullReferenceException
+4/2/2021 9:42:02 PM:LoadScene Scene 2 Draggable Panel
+4/2/2021 9:42:02 PM: response received: error:nullReferenceException
+4/2/2021 9:42:02 PM:LoadScene Scene 2 Draggable Panel
+4/2/2021 9:42:02 PM: response received: error:nullReferenceException
+4/2/2021 9:42:02 PM:LoadScene Scene 2 Draggable Panel
+4/2/2021 9:42:04 PM: response received: 1.6.2
+
+4/2/2021 9:42:04 PM: response received: Ok
+4/2/2021 9:42:04 PM:Logging is set to True
+4/2/2021 9:42:04 PM: response received: error:nullReferenceException
+4/2/2021 9:42:04 PM:LoadScene Scene 4 No Cameras

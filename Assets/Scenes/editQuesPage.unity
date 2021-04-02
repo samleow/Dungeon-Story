@@ -1476,7 +1476,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warriorPartical: {fileID: 0}
   magePartical: {fileID: 0}
-  rangerPartical: {fileID: 0}
+  barbarianPartical: {fileID: 0}
+  descriptionCanvas: {fileID: 0}
+  characterName: {fileID: 0}
+  attack: {fileID: 0}
+  health: {fileID: 0}
 --- !u!1 &669013293
 GameObject:
   m_ObjectHideFlags: 0
