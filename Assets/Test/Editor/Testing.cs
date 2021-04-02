@@ -32,7 +32,8 @@ public class Testing
         AltUnityDriver.FindObject(By.NAME, "login_password").SetText("a");
         AltUnityDriver.FindObject(By.NAME,"Login Button").ClickEvent();
         AltUnityDriver.WaitForCurrentSceneToBe("TitlePage");
-
+        
     }
+
 
 }
