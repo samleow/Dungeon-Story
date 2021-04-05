@@ -845,7 +845,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warriorPartical: {fileID: 0}
   magePartical: {fileID: 0}
-  rangerPartical: {fileID: 0}
+  barbarianPartical: {fileID: 0}
+  descriptionCanvas: {fileID: 0}
+  characterName: {fileID: 0}
+  attack: {fileID: 0}
+  health: {fileID: 0}
 --- !u!1 &795370626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,7 +1367,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: AdminPage
+          m_StringArgument: IndividualReportPage
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1169202743
