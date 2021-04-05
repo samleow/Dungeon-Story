@@ -334,21 +334,5 @@ public class CombatController : MonoBehaviour
         SceneManager.LoadScene("DoorPage");
     }
 
-    /*void AddQuestions()
-    {
-        // TODO
-        // temporary hardcoded qns as template after getting from qn bank
-        // can use for loop to iterate through qns
-        QuestionSet q1 = new QuestionSet();
-        q1.question = "1 + 1 = ?";
-        q1.answer = "b";
-        q1.difficulty = 1;
-        //q1.time_to_answer = 8;
-        q1.options.Add("0");
-        q1.options.Add("1");
-        q1.options.Add("2");
-        q1.options.Add("3");
-        questions.Add(q1);
-    }*/
 
 }

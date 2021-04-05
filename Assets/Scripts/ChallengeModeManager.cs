@@ -41,17 +41,17 @@ public class ChallengeModeManager : MonoBehaviour
     public Text winnerName = null;
 
     public Text timertext = null;
-    float currentTime = 0f;
-    float startingTime = 15f;
+    public float currentTime = 0f;
+    public float startingTime = 15f;
 
-    int score = 0;
-    int questionNum = 0;
+    public int score = 0;
+    public int questionNum = 0;
 
-    int player2score = 0;
-    int player2questionNum = 0;
+    public int player2score = 0;
+    public int player2questionNum = 0;
 
-    int player1score =0;
-    int player1questionNum =0;
+    public int player1score =0;
+    public int player1questionNum =0;
 
 
 
@@ -66,15 +66,7 @@ public class ChallengeModeManager : MonoBehaviour
         startButton.onClick.AddListener(gameplayCanvasEnable);
         startButtonP2.onClick.AddListener(gameplayCanvasEnable);
         CMQuestionSet = LoadCMQuestions.GetQuestionBank();
-        // Option1Button.onClick.AddListener(delegate{CMQuizController.CheckAnswer("a");});
-        // Option2Button.onClick.AddListener(delegate{CMQuizController.CheckAnswer("b");});
-        // Option3Button.onClick.AddListener(delegate{CMQuizController.CheckAnswer("c");});
 
-
-        //Timer Settings
-        // for future difficulty settings
-        //this.currentTime = 0f; 
-        // startingTime = 30f;
         
         currentTime = startingTime;
         timertext.color = Color.red;
@@ -130,10 +122,9 @@ public class ChallengeModeManager : MonoBehaviour
     }
 
     void gameEndCanvasEnable(){
-        //Debug.Log(CMQuizController.getScore());
+
         gameplayCanvas.enabled = false;
-       // Debug.Log("Player 2 Score" + player2score);
-       // Debug.Log("Player 2 questionnum" + player2questionNum);
+
         this.player2score = CMQuizController.getScore();
         this.player2questionNum = CMQuizController.getQuestionNum();
 
@@ -171,17 +162,6 @@ public class ChallengeModeManager : MonoBehaviour
             winnerName.text = "Player 1 Wins!";
         }
 
-        // Debug.Log("P1 total question: " + player1questionNum);
-        // Debug.Log("P2 total question: " + player2questionNum);
-        // Debug.Log("basetotalQuestion: " + baseTotalQuestion);
-        // Debug.Log("P1 accuracy: " + player1accuracy);
-        // Debug.Log("p2 accuracy: "+ player2accuracy);
-       // Debug.Log(string.Format("PlayerOneScore: {0}/{1}", this.player1score, this.player1questionNum));
-       // Debug.Log(string.Format("PlayerTwoScore: {0}/{1}", this.player2score, this.player2questionNum));
-
-
-
-
     }
 
     void playAgain(){
@@ -208,24 +188,18 @@ public class ChallengeModeManager : MonoBehaviour
         this.currentTime = startingTime;
         this.player1score = CMQuizController.getScore();
         this.player1questionNum = CMQuizController.getQuestionNum();
-        //Debug.Log("Player 1 Score: " +player1score);
-        //Debug.Log("Player 1 questionNum: " + player1questionNum);
         CMQuizController.setScore(0);
         CMQuizController.setQuestionNum(0);
     }
 
-    int accuracyCalculator(int score, int questionnum){
+    public int accuracyCalculator(int score, int questionnum){
 
         float fscore = (float)score;
         float fquestionnum = (float)questionnum;
 
-      //  Debug.Log("accuracy calcuator score: " + fscore);
-      //  Debug.Log("accuracy calcuator questinonum: " + fquestionnum);
         
         int accuracy = (int)Math.Round((double)(100 * fscore) / fquestionnum);
-    // Debug.Log("Accuracy is: " + accuracy);
 
-      //  Debug.Log("Accuracy of: " + accuracy);
         return accuracy;
     }
 }
